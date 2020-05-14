@@ -1,7 +1,11 @@
 import json, re
+import os
+script_dir = os.path.dirname(__file__)
+dataFileName = 'courses.json'
+dataFileName = os.path.join(script_dir, dataFileName)
 
-dataFileName = '/home/atibhi/Desktop/whats-slot-iiitb/flaskr/courses.json'
-slotFileName = '/home/atibhi/Desktop/whats-slot-iiitb/flaskr/slots.1.txt'
+slotFileName = './slots.1.txt'
+slotFileName = os.path.join(script_dir, slotFileName)
 
 def slot2Time(slot):
 	with open(slotFileName, 'r') as slotFile:

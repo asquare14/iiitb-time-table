@@ -6,7 +6,12 @@ from flask import (
 )
 from flaskr.search import searchData
 
-minorFileName = '/home/atibhi/Desktop/whats-slot-iiitb/flaskr/minor.json'
+import os
+script_dir = os.path.dirname(__file__)
+minorFileName = 'minor.json'
+minorFileName = os.path.join(script_dir, minorFileName)
+
+
 
 bp = Blueprint("blog", __name__, url_prefix="/")
 
