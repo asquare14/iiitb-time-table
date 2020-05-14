@@ -4,6 +4,7 @@ TAG="latest"
 else
 TAG="$TRAVIS_BRANCH"
 fi
-docker build -f Dockerfile -t $TRAVIS_REPO_SLUG:$TAG .
-docker tag $TRAVIS_REPO_SLUG $DOCKER_REPO
-docker push $DOCKER_REPO
+docker build -f Dockerfile -t "asquare14/whats-slot-iiitb":$TAG .
+docker tag "asquare14/whats-slot-iiitb" $DOCKER_REPO
+docker login --username=$DOCKER_USER --password=$DOCKER_PASS
+docker push asquare14/whats-slot-iiitb:$TAG

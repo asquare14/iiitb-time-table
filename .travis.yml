@@ -1,13 +1,17 @@
+sudo: required
+
+services:
+- docker
+
 language: python
 
 install:
 - sudo pip install --upgrade pip
 - pip install flask
 - pip install pytest
-- pip install flake8
 
 script:
 - pytest
-# - flake8 flaskr
-# - flake8 tests
 
+after_success:
+- sh .travis/deploy_dockerhub.sh
