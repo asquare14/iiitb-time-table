@@ -1,6 +1,13 @@
+language: python
+
 install:
-- pip install -r requirements.txt
+- sudo pip install --upgrade pip
+- pip install flask
+- pip install pytest
+- pip install flake8
 
 script:
 - pytest
-- flake
+# - flake8 flaskr
+# - flake8 tests
+
