@@ -7,4 +7,4 @@ COPY requirements.txt requirements.txt
 RUN pip install -r requirements.txt
 RUN pip install flask
 COPY . .
-ENTRYPOINT ["python","flaskr/blog.py"]
+CMD ["flask","run"]
