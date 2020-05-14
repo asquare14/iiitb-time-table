@@ -13,7 +13,6 @@ bp = Blueprint("blog", __name__, url_prefix="/")
 @bp.route('/')
 def home():
 	return render_template('home.html')
-	return ret 
 
 @bp.route('/search/')
 def search():
