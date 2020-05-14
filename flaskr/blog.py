@@ -4,7 +4,7 @@ import functools
 from flask import (
     Blueprint, flash, g, redirect, render_template, request, session, url_for
 )
-from flaskr.search import searchData
+from search import searchData
 
 import os
 script_dir = os.path.dirname(__file__)
@@ -13,19 +13,19 @@ minorFileName = os.path.join(script_dir, minorFileName)
 
 
 
-bp = Blueprint("blog", __name__, url_prefix="/")
+app = Flask(__name__)
 
-@bp.route('/')
+@app.route('/')
 def home():
 	return render_template('home.html')
 
-@bp.route('/search/')
+@app.route('/search/')
 def search():
 	query = request.args.get('term')
 	results = searchData(query)
 	return json.dumps( [ course['Name'] for course in results ] )
 
-@bp.route('/ajax/', methods=['POST'])
+@app.route('/ajax/', methods=['POST'])
 def getCourse():
 	query = request.form.get('query')
 	results = searchData(query)
@@ -34,9 +34,9 @@ def getCourse():
 	else:
 		return json.dumps( {} )
 
-@bp.route('/minor/')
+@app.route('/minor/')
 def minor():
-	with bp.open_resource(minorFileName, 'r') as minorFile:
+	with app.open_resource(minorFileName, 'r') as minorFile:
 		data = json.load(minorFile)
 	return json.dumps( data )
 
