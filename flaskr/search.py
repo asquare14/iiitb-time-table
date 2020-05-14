@@ -1,7 +1,7 @@
 import json, re
 
-dataFileName = '/home/atibhi/flask-tutorial/flaskr/courses.json'
-slotFileName = '/home/atibhi/flask-tutorial/flaskr/slots.1.txt'
+dataFileName = '/home/atibhi/Desktop/whats-slot-iiitb/flaskr/courses.json'
+slotFileName = '/home/atibhi/Desktop/whats-slot-iiitb/flaskr/slots.1.txt'
 
 def slot2Time(slot):
 	with open(slotFileName, 'r') as slotFile:
