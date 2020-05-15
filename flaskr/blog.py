@@ -11,8 +11,6 @@ script_dir = os.path.dirname(__file__)
 minorFileName = 'minor.json'
 minorFileName = os.path.join(script_dir, minorFileName)
 
-
-
 bp = Blueprint("blog", __name__, url_prefix="/")
 
 @bp.route('/')

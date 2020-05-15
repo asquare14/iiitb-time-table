@@ -57,3 +57,5 @@ Go to localhost:5000
 ```
 docker run -p 5000:5000 -it asquare14/whats-slot-iiitb
 ```
+
+ok
