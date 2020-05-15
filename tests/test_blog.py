@@ -2,8 +2,8 @@ import os
 import tempfile
 import pytest
 import unittest
-import flaskr
-from flaskr import blog
+import flask
+import app
 
 class BlogTestCase(unittest.TestCase):
 
