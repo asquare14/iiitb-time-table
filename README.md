@@ -13,14 +13,8 @@ virtualenv -p python3 myenv
 ```
 pip3 install -r requirements.txt
 ```
-3. Export flask app
 
-```
-export FLASK_ENV=development
-export FLASK_APP=flaskr
-```
-
-4. In root directory of project
+3. In root directory of project
 
 Activate virtual env
 
@@ -41,13 +35,12 @@ Go to localhost:5000
 
 ```
 docker -v
-docker-compose version
 ```
 2. Go to root directory of folder
 
 ```
-docker-compose build
-docker-compose up
+docker build -t whatslot:latest .
+docker run -d -p 5000:5000 whatslot
 ```
 
 Go to localhost:5000
