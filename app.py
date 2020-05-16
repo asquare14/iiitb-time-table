@@ -46,28 +46,6 @@ def result():
 @app.route('/professor', methods=['GET'])
 def main():
     prof = request.args.get('prof')
-    print(prof)
-    if prof:
-        print("hola")
-
-        tb, times, dept, website, prof = fetch_results(prof)
-        return render_template('main.html', name=prof, website=website, data=tb, times=times, profs=profs, dept=dept, error=False)
-
-    else:
-        return render_template('main.html', profs=profs) 
-
-
-
-@app.route('/professor', methods=['POST'])
-def result():
-    prof = request.form['prof']
-    tb, times, dept, website, prof = fetch_results(prof)
-    print(prof)
-    return render_template('main.html', name=prof, website=website, data=tb, times=times, profs=profs, dept=dept, error=False)
-
-@app.route('/professor', methods=['GET'])
-def main():
-    prof = request.args.get('prof')
     if prof:
 
         tb, times, dept, website, prof = fetch_results(prof)
