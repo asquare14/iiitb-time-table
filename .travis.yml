@@ -9,6 +9,7 @@ install:
 - sudo pip install --upgrade pip
 - pip install flask
 - pip install pytest
+- pip install requests
 
 script:
 - pytest
