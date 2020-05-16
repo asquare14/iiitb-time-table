@@ -50,7 +50,7 @@ def result():
     return render_template('main.html', name=prof, website=website, data=tb, times=times, profs=profs, dept=dept, error=False)
 
 @app.route('/professor', methods=['GET'])
-def mainfunc():
+def main():
     prof = request.args.get('prof')
     if prof:
 
