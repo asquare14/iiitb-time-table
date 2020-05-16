@@ -48,9 +48,6 @@ class CaseInsensitiveDict(dict):
 with open(os.path.join(script_dir, 'data/data.json'), 'r') as f:
     profs_dict = CaseInsensitiveDict(json.load(f))
 
-
-
-
 def get_times(prof_name):
     data = CaseInsensitiveDict(profs_dict)
     result = []
