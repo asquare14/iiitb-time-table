@@ -6,7 +6,6 @@ from flask import (
 )
 from search import searchData
 import os
-from bs4 import BeautifulSoup
 import itertools
 import requests
 import json
