@@ -6,6 +6,8 @@ from flask import (
 )
 from search import searchData
 import os
+from imports import *
+from prof import *
 
 app = Flask(__name__)
 port = int(os.environ.get("PORT", 5000))
@@ -38,6 +40,25 @@ def minor():
 	with app.open_resource(minorFileName, 'r') as minorFile:
 		data = json.load(minorFile)
 	return json.dumps( data )
+
+
+@app.route('/professor', methods=['POST'])
+def result():
+    prof = request.form['prof']
+    tb, times, dept, website, prof = fetch_results(prof)
+    print(prof)
+    return render_template('main.html', name=prof, website=website, data=tb, times=times, profs=profs, dept=dept, error=False)
+
+@app.route('/professor', methods=['GET'])
+def mainfunc():
+    prof = request.args.get('prof')
+    if prof:
+
+        tb, times, dept, website, prof = fetch_results(prof)
+        return render_template('main.html', name=prof, website=website, data=tb, times=times, profs=profs, dept=dept, error=False)
+
+    else:
+        return render_template('main.html', profs=profs) 
 
 if __name__ == '__main__':
 	port = int(os.environ.get("PORT", 5000))
