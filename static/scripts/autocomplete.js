@@ -34,7 +34,7 @@ function autocomplete(datalist, worker) {
     function displayResult(results) {    
         var content = '';
         for (r of results) {
-            content += '<a href="/?prof=' + datalist[r.index] + '" class="list-group-item list-group-item-action" class="suggestion-item">' + datalist[r.index] + '</a>'
+            content += '<a href="/professor?prof=' + datalist[r.index] + '" class="list-group-item list-group-item-action" class="suggestion-item">' + datalist[r.index] + '</a>'
         }
         
         suggestions.querySelector('ul').innerHTML = content;

@@ -46,8 +46,8 @@
                     <h1 class="text-center display-2">
                         Where Is My Prof?
                     </h1>
-                    <img src="{{url_for('static', filename='doodle.png')}}"
-                         style="width: 80%; margin-left: 10%; margin-right: 10%">
+                   <!--  <img src="{{url_for('static', filename='iiitb.png')}}"
+                         style="width: 20%; margin-left: 10%; margin-right: 10%"> -->
                     <br>
                     <p>
                     Start entering a professor's name in the text box. Select the professor
@@ -132,29 +132,14 @@
                     var fullLink = window.location.href;
                     var splitLink = fullLink.split('=');
                     if (splitLink.length>1) {
+                        console.log(splitLink)
                         searchQuery = splitLink[1].replace(/%20/g, " ");
+                        console.log(searchQuery)
                         var inputBox = document.getElementById("prof_query");
                         inputBox.value=searchQuery;
                         inputBox.focus();
                     }
                 </script>
-            </div>
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <p>
-                    Contribute to this project on
-                    <a href="https://github.com/metakgp/wimp"
-                       target="_blank">
-                        GitHub
-                    </a>
-		    | Powered by
-		    <a href="https://metakgp.github.io/"
-		       target="_blank">
-			MetaKGP
-		    </a>
-		    with <span style="font-size:150%;color:red;">&hearts;</span>
-                    </p>
-                </div>
             </div>
         </div>
 
