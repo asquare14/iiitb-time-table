@@ -1,11 +1,3 @@
-from flask import Flask
-import json, os, re
-import functools
-from flask import (
-    Blueprint, flash, g, redirect, render_template, request, session, url_for
-)
-from search import searchData
-import os
 from imports import *
 from prof import *
 
@@ -53,7 +45,6 @@ def result():
 def main():
     prof = request.args.get('prof')
     if prof:
-
         tb, times, dept, website, prof = fetch_results(prof)
         return render_template('main.html', name=prof, website=website, data=tb, times=times, profs=profs, dept=dept, error=False)
 
