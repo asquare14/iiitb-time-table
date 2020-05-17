@@ -17,6 +17,79 @@ function clearTT() {
         }
     }
     clearSelected();
+    console.log("oops")
+}
+
+function addToCalendar(){
+    var timetable = [];
+    var todaysDate = new Date();
+    var todaysDay = todaysDate.getDay();
+    if(todaysDay == 0)
+        todaysDay = 6;
+    else
+        todaysDay = todaysDay - 1;
+    for (var i = 0; i < 5; ++i) {
+        for (var j = 0; j < 9; ++j) {
+            if($('#' + i.toString() + j.toString()).hasClass('table-danger') || $('#' + i.toString() + j.toString()).hasClass('table-clash')){
+                var curr = [];
+                curr.push($('#' + i.toString() + j.toString()).html())
+                var d = new Date();
+                var numberOfDaysToAdd = 0;
+                if(i < todaysDay){
+                    numberOfDaysToAdd = i + 7 - todaysDay;
+                }
+                else{
+                    numberOfDaysToAdd = i - todaysDay;
+                }
+                d.setDate(d.getDate() + numberOfDaysToAdd);
+                var ye = d.getFullYear();
+                var mo = d.getMonth() + 1;
+                var da = d.getDate();
+                var start = '' + ye.toString() + '-' + mo.toString() + '-' + da.toString() + ' ';
+                var end = start;
+                if(j == 0){
+                    start = start + '08:00:00';
+                    end = end + '08:00:55';
+                }
+                else if(j == 1){
+                    start = start + '09:00:00';
+                    end = end + '09:00:55';
+                }
+                else if(j == 2){
+                    start = start + '10:00:00';
+                    end = end + '10:00:55';
+                }
+                else if(j == 3){
+                    start = start + '11:00:00';
+                    end = end + '11:00:55';
+                }
+                else if(j == 4){
+                    start = start + '12:00:00';
+                    end = end + '12:00:55';
+                }
+                else if(j == 5){
+                    start = start + '14:00:00';
+                    end = end + '14:00:55';
+                }
+                else if(j == 6){
+                    start = start + '15:00:00';
+                    end = end + '15:00:55';
+                }
+                else if(j == 7){
+                    start = start + '16:00:00';
+                    end = end + '16:00:55';
+                }
+                else if(j == 8){
+                    start = start + '17:00:00';
+                    end = end + '17:00:55';
+                }
+                curr.push(start)
+                curr.push(end)
+                timetable.push(curr)
+            }
+        }
+    }
+    console.log(timetable)
 }
 
 function sdCallback(data, id, course) {
@@ -38,9 +111,10 @@ function sdCallback(data, id, course) {
                     $('#' + courseData['Slot'][slot]).addClass('table-clash');
                     
                 }
-                else
+                else{
                     $('#' + courseData['Slot'][slot]).addClass('table-danger');
-                $('#' + courseData['Slot'][slot]).html(data['Name'].split(':')[0])
+                    $('#' + courseData['Slot'][slot]).html(data['Name'].split(':')[0])
+                }
             }
         }
         else {
