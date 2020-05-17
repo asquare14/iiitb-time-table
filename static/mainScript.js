@@ -33,10 +33,12 @@ function sdCallback(data, id, course) {
             for (var slot in courseData['Slot']) {
                 console.log(courseData)
                 $('#' + courseData['Slot'][slot]).addClass('border border-danger');
-                // if($('#' + courseData['Slot'][slot]).hasClass('table-clash'))
-                //     $('#' + courseData['Slot'][slot]).addClass('table-clash');
-                // else
-                //     $('#' + courseData['Slot'][slot]).addClass('table-clash');
+                if($('#' + courseData['Slot'][slot]).hasClass('table-danger')){
+                    $('#' + courseData['Slot'][slot]).removeClass('table-danger');
+                    $('#' + courseData['Slot'][slot]).addClass('table-clash');
+                }
+                else
+                    $('#' + courseData['Slot'][slot]).addClass('table-danger');
                 $('#' + courseData['Slot'][slot]).html(data['Name'].split(':')[0])
             }
         }
@@ -148,10 +150,12 @@ setTimeout(
 
 function toggle(el) {
     element = $(el);
-    if (element.hasClass('table-clash'))
-        element.removeClass('table-clash');
-    else
-        element.addClass('table-clash');
+    if (element.hasClass('table-danger')){
+        element.removeClass('table-danger');
+    }
+    else{
+        element.addClass('table-danger');
+    }
 }
 
 $('#timet td').attr('onclick', 'toggle(this)');
