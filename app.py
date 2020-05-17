@@ -49,7 +49,7 @@ def main():
         return render_template('main.html', name=prof, website=website, data=tb, times=times, profs=profs, dept=dept, error=False)
 
     else:
-        return render_template('main.html', profs=profs) 
+        return render_template('main.html', profs=profs)
 
 if __name__ == '__main__':
 	port = int(os.environ.get("PORT", 5000))

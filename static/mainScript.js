@@ -29,9 +29,14 @@ function sdCallback(data, id, course) {
             $('#details-div').html(details);
 
             // Update timetable
-            clearTT();
+            // clearTT();
             for (var slot in courseData['Slot']) {
+                console.log(courseData)
                 $('#' + courseData['Slot'][slot]).addClass('border border-danger');
+                // if($('#' + courseData['Slot'][slot]).hasClass('table-clash'))
+                //     $('#' + courseData['Slot'][slot]).addClass('table-clash');
+                // else
+                //     $('#' + courseData['Slot'][slot]).addClass('table-clash');
                 $('#' + courseData['Slot'][slot]).html(data['Name'].split(':')[0])
             }
         }
@@ -143,10 +148,10 @@ setTimeout(
 
 function toggle(el) {
     element = $(el);
-    if (element.hasClass('table-danger'))
-        element.removeClass('table-danger');
+    if (element.hasClass('table-clash'))
+        element.removeClass('table-clash');
     else
-        element.addClass('table-danger');
+        element.addClass('table-clash');
 }
 
 $('#timet td').attr('onclick', 'toggle(this)');
@@ -154,7 +159,7 @@ $('#timet td').attr('onclick', 'toggle(this)');
 function readICS() {
     var file = document.getElementById('file-in').files[0];
     if (file) {
-        $('#timet td').removeClass('table-danger');
+        $('#timet td').removeClass('table-clash');
 
         var reader = new FileReader();
         reader.onload = function (e) {
@@ -181,7 +186,7 @@ function readICS() {
 
                     for (var i = 0; i < duration; ++i) {
                         var id = day.toString() + (hour + i).toString();
-                        $('#' + id).addClass('table-danger');
+                        $('#' + id).addClass('table-clash');
                     }
 
                 }
