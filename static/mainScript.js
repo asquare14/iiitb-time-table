@@ -11,9 +11,12 @@ function clearTT() {
     for (var i = 0; i < 5; ++i) {
         for (var j = 0; j < 9; ++j) {
             $('#' + i.toString() + j.toString()).removeClass('border border-danger');
+            $('#' + i.toString() + j.toString()).removeClass('table-danger');
+            $('#' + i.toString() + j.toString()).removeClass('table-clash');
             $('#' + i.toString() + j.toString()).html('');
         }
     }
+    clearSelected();
 }
 
 function sdCallback(data, id, course) {
@@ -28,14 +31,12 @@ function sdCallback(data, id, course) {
             }
             $('#details-div').html(details);
 
-            // Update timetable
-            // clearTT();
             for (var slot in courseData['Slot']) {
-                console.log(courseData)
                 $('#' + courseData['Slot'][slot]).addClass('border border-danger');
                 if($('#' + courseData['Slot'][slot]).hasClass('table-danger')){
                     $('#' + courseData['Slot'][slot]).removeClass('table-danger');
                     $('#' + courseData['Slot'][slot]).addClass('table-clash');
+                    
                 }
                 else
                     $('#' + courseData['Slot'][slot]).addClass('table-danger');
@@ -60,7 +61,6 @@ function clearSelected() {
 
 function searchData(q = $("#search-bar").val(), id = undefined) {
     var searchString = "";
-    clearSelected();
     if (typeof q !== "string") {
         searchString = q.innerHTML; // Get list item's name
         q.className += ' active';
@@ -200,54 +200,3 @@ function readICS() {
         reader.readAsText(file);
     }
 }
-
-
-
-//toggle night/light mode
-var button = false;
-var lightColors = [
-    '#ec3654',
-    '#36c1ec',
-    '#40d48f',
-    '#b535ff',
-    '#ff9913'
-], darkColors = [
-    '#12c571',
-    '#1886e0',
-    '#ff69b4',
-    '#e63b58',
-    '#b039ff'
-]
-function toggleDarkLight() {
-    var mainColor = lightColors[0];
-    if (button) {
-        // Light mode colors
-        button = false;
-        mainColor = lightColors[Math.floor(Math.random() * lightColors.length)];
-        $(".courses,.timetable").css("color", "black");
-
-        document.documentElement.style
-            .setProperty('--bg-color', 'white');
-        document.documentElement.style
-            .setProperty('--text-color', '#2e2e2e');
-
-        document.documentElement.style
-            .setProperty('--search-color', '#2e2e2e');
-    }
-    else {
-        button = true;
-        // Dark Mode colors
-        mainColor = darkColors[Math.floor(Math.random() * darkColors.length)];
-
-        $(".courses,.timetable").css("color", "#eee");
-        document.documentElement.style
-            .setProperty('--bg-color', '#2F304D');
-        document.documentElement.style
-            .setProperty('--text-color', '#e0e0e0');
-        document.documentElement.style
-            .setProperty('--search-color', '#2e2e2e');
-    }
-    document.documentElement.style
-        .setProperty('--main-color', mainColor);
-}
-feather.replace()
