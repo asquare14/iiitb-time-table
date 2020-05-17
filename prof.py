@@ -4,7 +4,6 @@ script_dir = os.path.dirname(__file__)
 
 profs_dict = {}
 
-
 DEPT_KEY = 'dept'
 WEBSITE_KEY = 'website'
 TIMETABLE_KEY = 'timetable'
@@ -106,8 +105,6 @@ def fetch_results(prof):
     slot_data = get_times(prof)
     dept = get_attr(prof, 'dept')
     website = get_attr(prof, 'website')
-    print(prof, slot_data, dept, website)
-
     if len(slot_data) == 0 and len(dept) == 0:
         abort(404)
 
@@ -123,5 +120,12 @@ def fetch_results(prof):
                 venue = 'In Dept'
 
             tb[int(item[0])][int(item[1])+1].append(venue)
-
     return [tb, times, dept, website, prof.title()]
+
+
+def fetch_rooms(prof,room):
+    slot_data = get_times(prof)
+    data = get_table(slot_data)
+    for item in data:
+        if(data[item]):
+            room[item]=data[item]

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+    table, th, td {
+        border: 1px solid black;
+    }
+    </style>
+</head>
+<body>
+<table>
+    <thead style="border: 1px solid black;">
+    <tr>
+        <th>day-time</th>
+        <th>room</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for ob in my_objects %}
+    <tr>
+        <td>{{ ob.date }}</td>
+        <td>{{ ob.room }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+</body>
+</html>

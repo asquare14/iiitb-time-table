@@ -37,20 +37,38 @@ def minor():
 
 @app.route('/professor', methods=['POST'])
 def result():
-    prof = request.form['prof']
-    tb, times, dept, website, prof = fetch_results(prof)
-    print(prof)
-    return render_template('main.html', name=prof, website=website, data=tb, times=times, profs=profs, dept=dept, error=False)
+	prof = request.form['prof']
+	tb, times, dept, website, prof = fetch_results(prof)
+	print(prof)
+	return render_template('main.html', name=prof, website=website, data=tb, times=times, profs=profs, dept=dept, error=False)
 
 @app.route('/professor', methods=['GET'])
-def main():
-    prof = request.args.get('prof')
-    if prof:
-        tb, times, dept, website, prof = fetch_results(prof)
-        return render_template('main.html', name=prof, website=website, data=tb, times=times, profs=profs, dept=dept, error=False)
+def prof():
+	prof = request.args.get('prof')
+	if prof:
+		tb, times, dept, website, prof = fetch_results(prof)
+		return render_template('main.html', name=prof, website=website, data=tb, times=times, profs=profs, dept=dept, error=False)
 
-    else:
-        return render_template('main.html', profs=profs) 
+	else:
+		return render_template('main.html', profs=profs) 
+
+class Room(object):
+    def __init__(self, date, room):
+        self.date = date
+        self.room = room
+
+@app.route('/room')
+def room():
+	with open(os.path.join(script_dir, 'data/data.json'),'r') as f:
+		profs_dict = CaseInsensitiveDict(json.load(f))
+	room = {}
+	for prof in profs_dict:
+		fetch_rooms(prof,room)
+	
+	my_objects = [ ]
+	for item in room:
+		my_objects.append(Room(item,room[item]))
+	return render_template('room.html', my_objects=my_objects)
 
 if __name__ == '__main__':
 	port = int(os.environ.get("PORT", 5000))
