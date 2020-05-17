@@ -8,18 +8,21 @@
 virtualenv -p python3 myenv
 ```
 
-2. Install dependencies using requirements.txt
-
-```
-pip3 install -r requirements.txt
-```
-
-3. In root directory of project
+2. In root directory of project
 
 Activate virtual env
 
 ```
 source myenv/bin/activate
+```
+
+3. Install dependencies using requirements.txt
+
+```
+pip3 install -r requirements.txt
+```
+
+
 ```
 Run app
 
