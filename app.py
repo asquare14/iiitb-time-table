@@ -2,6 +2,7 @@ from imports import *
 from prof import *
 
 app = Flask(__name__)
+app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 port = int(os.environ.get("PORT", 5000))
 
 script_dir = os.path.dirname(__file__)
