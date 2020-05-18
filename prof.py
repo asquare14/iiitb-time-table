@@ -114,4 +114,4 @@ def fetch_results(prof):
 
             tb[int(item[0])][int(item[1])+1].append(venue)
 
-    return [tb, times, dept, website, prof.title(), course]
+    return [tb, timeslots, dept, website, prof.title(), course]
