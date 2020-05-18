@@ -9,7 +9,6 @@ class CaseInsensitiveDict(dict):
 
     temp = {}
 
-
     def __init__(self, data):
         self.temp = dict((k.lower(), k) for k in data)
         for k in data:
@@ -40,7 +39,7 @@ class CaseInsensitiveDict(dict):
         self.temp[k.lower()] = k
 
 
-with open(os.path.join(script_dir, 'data/data.json'), 'r') as f:
+with open(os.path.join(script_dir, 'prof_data.json'), 'r') as f:
     profs_dict = CaseInsensitiveDict(json.load(f))
 
 def get_times(prof_name):
@@ -80,17 +79,13 @@ def get_table(details):
 def get_attr(prof_name, key):
     data = CaseInsensitiveDict(profs_dict)
     result = ""
-
     try:
-
         result = data[prof_name][key]
-
     except:
-
         pass
 
 
-with open(os.path.join(script_dir, 'data/data.json')) as f:
+with open(os.path.join(script_dir, 'prof_data.json')) as f:
     profs = list(set(json.load(f).keys()))
     profs.sort()
 
@@ -101,7 +96,7 @@ def fetch_results(prof):
     slot_data = get_times(prof)
     dept = get_attr(prof, 'dept')
     website = get_attr(prof, 'website')
-    print(prof, slot_data, dept, website)
+    course = profs_dict[prof]['course']    
 
     if len(slot_data) == 0 and len(dept) == 0:
         abort(404)
@@ -119,4 +114,8 @@ def fetch_results(prof):
 
             tb[int(item[0])][int(item[1])+1].append(venue)
 
+<<<<<<< HEAD
     return [tb, timeslots, dept, website, prof.title()]
+=======
+    return [tb, times, dept, website, prof.title(), course]
+>>>>>>> c9a24aaa7ccb3d9f30320740687a70de7a1d453b
