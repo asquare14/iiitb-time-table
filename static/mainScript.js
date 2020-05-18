@@ -17,7 +17,6 @@ function clearTT() {
         }
     }
     clearSelected();
-    console.log("oops")
 }
 
 function addToCalendar(){
