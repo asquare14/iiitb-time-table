@@ -47,12 +47,13 @@ def result():
 def main():
     prof = request.args.get('prof')
     if prof:
-
         tb, times, dept, website, prof = fetch_results(prof)
         return render_template('main.html', name=prof, website=website, data=tb, times=times, profs=profs, dept=dept, error=False)
 
     else:
-        return render_template('main.html', profs=profs) 
+        return render_template('main.html', profs=profs)
 
 if __name__ == '__main__':
+	
 	port = int(os.environ.get("PORT", 5000))
+	app.run(host='0.0.0.0', port=port, debug=True)

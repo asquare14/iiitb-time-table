@@ -12,3 +12,7 @@ import json
 import re
 import sys
 import collections
+
+DEPT_KEY = 'dept'
+WEBSITE_KEY = 'website'
+TIMETABLE_KEY = 'timetable'
