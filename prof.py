@@ -8,6 +8,7 @@ profs_dict = {}
 DEPT_KEY = 'dept'
 WEBSITE_KEY = 'website'
 TIMETABLE_KEY = 'timetable'
+COURSE_KEY = 'course'
 
 class CaseInsensitiveDict(dict):
     """Basic case insensitive dict with strings only keys."""
@@ -45,7 +46,7 @@ class CaseInsensitiveDict(dict):
         self.proxy[k.lower()] = k
 
 
-with open(os.path.join(script_dir, 'data/data.json'), 'r') as f:
+with open(os.path.join(script_dir, 'prof_data.json'), 'r') as f:
     profs_dict = CaseInsensitiveDict(json.load(f))
 
 def get_times(prof_name):
@@ -85,17 +86,13 @@ def get_table(details):
 def get_attr(prof_name, key):
     data = CaseInsensitiveDict(profs_dict)
     result = ""
-
     try:
-
         result = data[prof_name][key]
-
     except:
-
         pass
 
 
-with open(os.path.join(script_dir, 'data/data.json')) as f:
+with open(os.path.join(script_dir, 'prof_data.json')) as f:
     profs = list(set(json.load(f).keys()))
     profs.sort()
 
@@ -106,7 +103,7 @@ def fetch_results(prof):
     slot_data = get_times(prof)
     dept = get_attr(prof, 'dept')
     website = get_attr(prof, 'website')
-    print(prof, slot_data, dept, website)
+    course = profs_dict[prof]['course']    
 
     if len(slot_data) == 0 and len(dept) == 0:
         abort(404)
@@ -124,4 +121,4 @@ def fetch_results(prof):
 
             tb[int(item[0])][int(item[1])+1].append(venue)
 
-    return [tb, times, dept, website, prof.title()]
+    return [tb, times, dept, website, prof.title(), course]
