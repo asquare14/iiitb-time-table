@@ -9,6 +9,7 @@ script_dir = os.path.dirname(__file__)
 minorFileName = 'course_list.json'
 minorFileName = os.path.join(script_dir, minorFileName)
 
+
 @app.route('/')
 def home():
 	return render_template('home.html')
@@ -33,7 +34,7 @@ def minor():
 	with app.open_resource(minorFileName, 'r') as minorFile:
 		data = json.load(minorFile)
 	return json.dumps( data )
-
+	app.run(host='0.0.0.0', port=port, debug=True)
 
 @app.route('/professor', methods=['POST'])
 def result():
@@ -47,10 +48,10 @@ def main():
 	if prof:
 		tb, times, dept, website, prof, course = fetch_results(prof)
 		return render_template('main.html', name=prof, website=website, data=tb, times=times, profs=profs, dept=dept,course=course, error=False)
-
 	else:
 		return render_template('main.html', profs=profs) 
 
 if __name__ == '__main__':
+
 	port = int(os.environ.get("PORT", 5000))
 	app.run(host='0.0.0.0', port=port, debug=True)
