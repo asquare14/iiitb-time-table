@@ -87,11 +87,14 @@
                             {% for row in data %}
                             <tr>
                                 {% for col in row %}
+                                {% set outer_loop = loop %}
                                 <td class="col-md-1" style="padding: 0;">
                                     {% for venue in col %}
                                     <div class="venue">
                                         {{ venue }}
-                                        {{ course }}
+                                        {% if outer_loop.index > 1 %}
+                                            {{ course }}
+                                        {% endif %}
                                     </div>
                                     {% endfor %}
                                 </td>
