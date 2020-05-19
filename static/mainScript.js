@@ -11,9 +11,84 @@ function clearTT() {
     for (var i = 0; i < 5; ++i) {
         for (var j = 0; j < 9; ++j) {
             $('#' + i.toString() + j.toString()).removeClass('border border-danger');
+            $('#' + i.toString() + j.toString()).removeClass('table-danger');
+            $('#' + i.toString() + j.toString()).removeClass('table-clash');
             $('#' + i.toString() + j.toString()).html('');
         }
     }
+    clearSelected();
+}
+
+function addToCalendar(){
+    var timetable = [];
+    var todaysDate = new Date();
+    var todaysDay = todaysDate.getDay();
+    if(todaysDay == 0)
+        todaysDay = 6;
+    else
+        todaysDay = todaysDay - 1;
+    for (var i = 0; i < 5; ++i) {
+        for (var j = 0; j < 9; ++j) {
+            if($('#' + i.toString() + j.toString()).hasClass('table-danger') || $('#' + i.toString() + j.toString()).hasClass('table-clash')){
+                var curr = [];
+                curr.push($('#' + i.toString() + j.toString()).html())
+                var d = new Date();
+                var numberOfDaysToAdd = 0;
+                if(i < todaysDay){
+                    numberOfDaysToAdd = i + 7 - todaysDay;
+                }
+                else{
+                    numberOfDaysToAdd = i - todaysDay;
+                }
+                d.setDate(d.getDate() + numberOfDaysToAdd);
+                var ye = d.getFullYear();
+                var mo = d.getMonth() + 1;
+                var da = d.getDate();
+                var start = '' + ye.toString() + '-' + mo.toString() + '-' + da.toString() + ' ';
+                var end = start;
+                if(j == 0){
+                    start = start + '08:00:00';
+                    end = end + '08:00:55';
+                }
+                else if(j == 1){
+                    start = start + '09:00:00';
+                    end = end + '09:00:55';
+                }
+                else if(j == 2){
+                    start = start + '10:00:00';
+                    end = end + '10:00:55';
+                }
+                else if(j == 3){
+                    start = start + '11:00:00';
+                    end = end + '11:00:55';
+                }
+                else if(j == 4){
+                    start = start + '12:00:00';
+                    end = end + '12:00:55';
+                }
+                else if(j == 5){
+                    start = start + '14:00:00';
+                    end = end + '14:00:55';
+                }
+                else if(j == 6){
+                    start = start + '15:00:00';
+                    end = end + '15:00:55';
+                }
+                else if(j == 7){
+                    start = start + '16:00:00';
+                    end = end + '16:00:55';
+                }
+                else if(j == 8){
+                    start = start + '17:00:00';
+                    end = end + '17:00:55';
+                }
+                curr.push(start)
+                curr.push(end)
+                timetable.push(curr)
+            }
+        }
+    }
+    console.log(timetable)
 }
 
 function sdCallback(data, id, course) {
@@ -28,11 +103,17 @@ function sdCallback(data, id, course) {
             }
             $('#details-div').html(details);
 
-            // Update timetable
-            clearTT();
             for (var slot in courseData['Slot']) {
                 $('#' + courseData['Slot'][slot]).addClass('border border-danger');
-                $('#' + courseData['Slot'][slot]).html(data['Name'].split(':')[0])
+                if($('#' + courseData['Slot'][slot]).hasClass('table-danger')){
+                    $('#' + courseData['Slot'][slot]).removeClass('table-danger');
+                    $('#' + courseData['Slot'][slot]).addClass('table-clash');
+                    
+                }
+                else{
+                    $('#' + courseData['Slot'][slot]).addClass('table-danger');
+                    $('#' + courseData['Slot'][slot]).html(data['Name'].split(':')[0])
+                }
             }
         }
         else {
@@ -53,7 +134,6 @@ function clearSelected() {
 
 function searchData(q = $("#search-bar").val(), id = undefined) {
     var searchString = "";
-    clearSelected();
     if (typeof q !== "string") {
         searchString = q.innerHTML; // Get list item's name
         q.className += ' active';
@@ -143,10 +223,12 @@ setTimeout(
 
 function toggle(el) {
     element = $(el);
-    if (element.hasClass('table-danger'))
+    if (element.hasClass('table-danger')){
         element.removeClass('table-danger');
-    else
+    }
+    else{
         element.addClass('table-danger');
+    }
 }
 
 $('#timet td').attr('onclick', 'toggle(this)');
@@ -154,7 +236,7 @@ $('#timet td').attr('onclick', 'toggle(this)');
 function readICS() {
     var file = document.getElementById('file-in').files[0];
     if (file) {
-        $('#timet td').removeClass('table-danger');
+        $('#timet td').removeClass('table-clash');
 
         var reader = new FileReader();
         reader.onload = function (e) {
@@ -181,7 +263,7 @@ function readICS() {
 
                     for (var i = 0; i < duration; ++i) {
                         var id = day.toString() + (hour + i).toString();
-                        $('#' + id).addClass('table-danger');
+                        $('#' + id).addClass('table-clash');
                     }
 
                 }
@@ -191,54 +273,3 @@ function readICS() {
         reader.readAsText(file);
     }
 }
-
-
-
-//toggle night/light mode
-var button = false;
-var lightColors = [
-    '#ec3654',
-    '#36c1ec',
-    '#40d48f',
-    '#b535ff',
-    '#ff9913'
-], darkColors = [
-    '#12c571',
-    '#1886e0',
-    '#ff69b4',
-    '#e63b58',
-    '#b039ff'
-]
-function toggleDarkLight() {
-    var mainColor = lightColors[0];
-    if (button) {
-        // Light mode colors
-        button = false;
-        mainColor = lightColors[Math.floor(Math.random() * lightColors.length)];
-        $(".courses,.timetable").css("color", "black");
-
-        document.documentElement.style
-            .setProperty('--bg-color', 'white');
-        document.documentElement.style
-            .setProperty('--text-color', '#2e2e2e');
-
-        document.documentElement.style
-            .setProperty('--search-color', '#2e2e2e');
-    }
-    else {
-        button = true;
-        // Dark Mode colors
-        mainColor = darkColors[Math.floor(Math.random() * darkColors.length)];
-
-        $(".courses,.timetable").css("color", "#eee");
-        document.documentElement.style
-            .setProperty('--bg-color', '#2F304D');
-        document.documentElement.style
-            .setProperty('--text-color', '#e0e0e0');
-        document.documentElement.style
-            .setProperty('--search-color', '#2e2e2e');
-    }
-    document.documentElement.style
-        .setProperty('--main-color', mainColor);
-}
-feather.replace()

@@ -17,7 +17,7 @@
               integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
               crossorigin="anonymous">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title> WIMP - Where Is My Prof? </title>
+        <title> Find your professor </title>
 
         <style>
 
@@ -44,14 +44,13 @@
                 </div>
                 <div class="col-md-8">
                     <h1 class="text-center display-2">
-                        Where Is My Prof?
+                        Find your Professor
                     </h1>
                    <!--  <img src="{{url_for('static', filename='iiitb.png')}}"
                          style="width: 20%; margin-left: 10%; margin-right: 10%"> -->
                     <br>
                     <p>
-                    Start entering a professor's name in the text box. Select the professor
-                    from the list. The result will show the weekly timetable of the
+                    Select a name to see the weekly timetable of the
                     professor!
                     </p>
                     {% if name %}
@@ -92,6 +91,7 @@
                                     {% for venue in col %}
                                     <div class="venue">
                                         {{ venue }}
+                                        {{ course }}
                                     </div>
                                     {% endfor %}
                                 </td>

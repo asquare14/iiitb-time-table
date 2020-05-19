@@ -1,0 +1,20 @@
+[
+	{
+		"Name" : "Core",
+		"Courses" : [
+			"CS101"
+		]
+	},
+	{
+		"Name" : "Data Science",
+		"Courses" : [
+			"DS101"
+		]
+	},
+	{
+		"Name" : "Networks",
+		"Courses" : [
+			"NC101"
+		]
+	}
+]

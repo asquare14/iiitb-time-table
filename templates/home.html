@@ -41,16 +41,9 @@
 
 			<nav>
 				<div class="logo">
-					<h1>What Slot</h1>
+					<h1>Time Table Visualizer</h1>
 				</div>
-				<a href="https://github.com/metakgp/what-slot/"> <i data-feather='github'></i> </a>
-				<i data-feather='sun'></i>
-				<label class="switch">
-					<input type="checkbox" onclick="toggleDarkLight()">
-					<span class="slider round"></span>
-				</label>
-				<i data-feather='moon'></i>
-
+				<a href="/professor"> <h4>Faculty Timetable</h4> </a>
 			</nav>
 
 			<div class="timetable">
@@ -137,23 +130,17 @@
 			<footer>
 				<div class="row">
 					<i class="info">Click on a slot to mark it as occupied</i>
-					<h4 class="unlockFont">Upload ICS file of your timetable from <a href="https://gyft.metakgp.org/"
-							target="_blank"></a></h4>
-					<input id="file-in" type="file" class="form-control col-auto" onchange="readICS()">
 				</div>
 				<div id="details-div"></div>
-
+				<button onclick="clearTT()">Clear Visualizer</button>
+				<button onclick="addToCalendar()">Add to Google Calendar</button>
 			</footer>
 
 
 		</div>
 		<aside class="sidebar">
 			<div class="Courses">
-				<div class="search">
-					<input id="search-bar" placeholder="Search for courses">
-					<button type="button" id="search-but"><i data-feather="search"></i></button>
-				</div>
-				<h1>Minor Courses</h1>
+				<h1>Courses</h1>
 				<div id="minor-div"></div>
 			</div>
 		</aside>
