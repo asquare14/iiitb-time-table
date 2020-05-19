@@ -64,7 +64,7 @@ def get_table(details):
     tb = {}
 
     for i in range(5):
-        for j in range(9):
+        for j in range(4):
             tb.update({'%d%d' % (i, j): []})
 
     for times, venues in details:
@@ -92,7 +92,7 @@ with open(os.path.join(script_dir, 'prof_data.json')) as f:
 
 def fetch_results(prof):
     tb = [[['Monday']], [['Tuesday']], [['Wednesday']], [['Thursday']], [['Friday']]]
-    timeslots = ['', '8 AM', '9 AM', '10 AM', '11 AM', '12 PM', '2 PM', '3 PM', '4 PM', '5 PM']
+    timeslots = ['', '9:30 AM - 11:00 AM', '11:15 AM - 12:45 PM', '14:00 PM - 15:30 PM', '15:45 PM - 17:15 PM']
     slot_data = get_times(prof)
     dept = get_attr(prof, 'dept')
     website = get_attr(prof, 'website')
@@ -104,14 +104,13 @@ def fetch_results(prof):
     data = get_table(slot_data)
 
     for row in tb:
-        for i in range(9):
+        for i in range(5):
             row.append([])
 
     for item in data:
         for venue in data[item]:
             if venue == '0':
                 venue = 'In Dept'
-
             tb[int(item[0])][int(item[1])+1].append(venue)
 
     return [tb, timeslots, dept, website, prof.title(), course]

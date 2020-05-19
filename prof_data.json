@@ -1,13 +1,13 @@
 {"B Thangaraju": 
     {"dept": "CS", "course": "SPE", "website": "https://www.iiitb.ac.in/", 
-    "timetable": [[["24", "33", "41", "42"], ["R106"]]]}, 
+    "timetable": [[["02", "33", "41", "42"], ["R106"]]]}, 
 "Bidisha Chaudhuri": 
     {"dept": "Sociology","course": "History of Ideas", "website": "https://www.iiitb.ac.in/", 
-    "timetable": [[["22", "31", "43", "44"], ["MCR106"]]]},
+    "timetable": [[["22", "31", "41", "43"], ["MCR106"]]]},
 "Ashish Choudhury": 
     {"dept": "CS", "course": "Crypto", "website": "https://www.iiitb.ac.in/", 
-    "timetable": [[["14", "32", "44", "22"], ["A204"]]]}, 
+    "timetable": [[["10", "32", "42", "22"], ["A204"]]]}, 
 "Chetan Parikh": 
     {"dept": "ECE","course": "Basic Electronics",  "website": "https://www.iiitb.ac.in/", 
-    "timetable": [[["21", "11", "34", "42"], ["R103"]]]}
+    "timetable": [[["01", "11", "30", "42"], ["R103"]]]}
 }
