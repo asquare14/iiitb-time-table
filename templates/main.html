@@ -133,15 +133,14 @@
 
                 <script>
                     var fullLink = window.location.href;
+                    console.log(fullLink)
                     var splitLink = fullLink.split('=');
                     if (splitLink.length>1) {
-                        console.log(splitLink)
-                        searchQuery = splitLink[1].replace(/%20/g, " ");
-                        console.log(searchQuery)
-                        var inputBox = document.getElementById("prof_query");
-                        inputBox.value=searchQuery;
-                        inputBox.focus();
-                    }
+                         searchQuery = splitLink[1].replace(/%20/g, " ");
+                         var inputBox = document.getElementById("prof_query");
+                         inputBox.value=searchQuery;
+                         inputBox.focus();
+                     }
                 </script>
             </div>
         </div>

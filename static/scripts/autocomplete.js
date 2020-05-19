@@ -25,6 +25,7 @@ function autocomplete(datalist, worker) {
     function search(query) {
         currentQuery = query;
         processing = true;
+        console.log("uff")
         worker.postMessage({type: 'query', query: query}); 
     }
 
