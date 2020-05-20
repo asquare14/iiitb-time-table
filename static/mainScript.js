@@ -149,6 +149,9 @@ function clearSelected() {
 
 
 function searchData(q = $("#search-bar").val(), id = undefined) {
+    if(typeof q.className !== "undefined" && q.className.length == 13){
+        return;
+    }
     var searchString = "";
     if (typeof q !== "string") {
         searchString = q.innerHTML; // Get list item's name
