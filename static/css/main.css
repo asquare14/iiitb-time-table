@@ -259,7 +259,7 @@ ul.ui-autocomplete {
   color: #fff;
 }
 .table .table-clash{
-  background-color: #00008B;
+  background-color: red;
   color: #FFFFFF;
 }
 .border.border-danger {
