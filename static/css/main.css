@@ -153,7 +153,7 @@ nav {
   align-items: center;
   padding: 1rem;
   color: #015483;
-  background:#D3D3D3;
+  background:#f8f9fa;
 }
 
 nav .logo {
@@ -171,7 +171,7 @@ nav a svg {
 
 nav svg {
   padding: 0 1rem;
-  color: #ffffffaa;
+  color: #f8f9fa;
 }
 
 .search {
@@ -345,7 +345,7 @@ li.course.active {
 	left: 0;
 	right: 0;
 	bottom: 0;
-	background-color: #ccc;
+	background-color: #f8f9fa;
 	-webkit-transition: .4s;
 	transition: .4s;
   }
