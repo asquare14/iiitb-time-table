@@ -1,5 +1,6 @@
 from imports import *
 from prof import *
+from calendarfunc import *
 
 app = Flask(__name__)
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
@@ -10,37 +11,13 @@ minorFileName = 'course_list.json'
 minorFileName = os.path.join(script_dir, minorFileName)
 
 
-def format_data(data):
-	today = date.today()
-	day = today.weekday()
-	my_events = []
-	for i in range(len(data)):
-		for j in range(1, len(data[i])):
-			numberOfDaysToAdd = 0
-			if i < day:
-				numberOfDaysToAdd = i + 7 - day
-			else:
-				numberOfDaysToAdd = i - day
-			if(len(data[i][j])):
-				temp = []
-				thisday = today + timedelta(days = numberOfDaysToAdd)
-				temp.append(data[i][j])
-				temp.append(thisday.strftime("%Y-%m-%d") + " " + timeMapStart[j - 1])
-				temp.append(thisday.strftime("%Y-%m-%d") + " " + timeMapEnd[j - 1])
-				my_events.append(temp)
-	my_events.sort()
-	return my_events
-
-
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def home():
+	if request.method == 'POST':
+		data = request.json
+		download_ics_file(data)
+		return jsonify(data)
 	return render_template('home.html')
-
-@app.route('/search/')
-def search():
-	query = request.args.get('term')
-	results = searchData(query)
-	return json.dumps( [ course['Name'] for course in results ] )
 
 @app.route('/ajax/', methods=['POST'])
 def getCourse():
@@ -64,8 +41,11 @@ def result():
 	tb, times, dept, website, prof, course = fetch_results(prof)
 	return render_template('main.html', name=prof, website=website, data=tb, times=times, profs=profs, dept=dept,course=course, error=False)
 
+my_events = []
+
 @app.route('/professor', methods=['GET'])
 def main():
+	global my_events
 	prof = request.args.get('prof')
 	if prof:
 		tb, times, dept, website, prof, course = fetch_results(prof)
@@ -74,6 +54,12 @@ def main():
 		return render_template('main.html', name=prof, website=website, data=tb, times=times, profs=profs, dept=dept,course=course, error=False)
 	else:
 		return render_template('main.html', profs=profs) 
+
+@app.route('/ics_helper')
+def ics_helper():
+	print(my_events)
+	download_ics_file(my_events)
+	return ("")
 
 if __name__ == '__main__':
 

@@ -1,11 +1,4 @@
 
-$(function () {
-    $("#search-bar").autocomplete({
-        source: "/search/",
-        // minLength: 3,
-    });
-}
-);
 
 function clearTT() {
     for (var i = 0; i < 5; ++i) {
@@ -19,7 +12,7 @@ function clearTT() {
     clearSelected();
 }
 
-function addToCalendar(){
+function getTimeTable(){
     var timetable = [];
     var todaysDate = new Date();
     var todaysDay = todaysDate.getDay();
@@ -41,10 +34,14 @@ function addToCalendar(){
                     numberOfDaysToAdd = i - todaysDay;
                 }
                 d.setDate(d.getDate() + numberOfDaysToAdd);
-                var ye = d.getFullYear();
-                var mo = d.getMonth() + 1;
-                var da = d.getDate();
-                var start = '' + ye.toString() + '-' + mo.toString() + '-' + da.toString() + ' ';
+                var ye = d.getFullYear().toString();
+                var mo = (d.getMonth() + 1).toString();
+                var da = d.getDate().toString();
+                if(mo.length == 1)
+                    mo = '0' + mo
+                if(da.length == 1)
+                    da = '0' + da
+                var start = '' + ye + '-' + mo + '-' + da + ' ';
                 var end = start;
                 if(j == 0){
                     start = start + '08:00:00';
@@ -89,7 +86,25 @@ function addToCalendar(){
         }
     }
     console.log(timetable)
+    return timetable
 }
+
+function addToCalendar(){
+    var timetable = JSON.stringify(getTimeTable());
+    $.ajax({
+        url: '/',
+        type: 'post',
+        contentType: 'application/json',
+        dataType: 'json',
+        data: timetable    
+    }).done(function(result){
+        console.log(result);
+    }).fail(function(jqXHR, textStatus, errorThrown){
+        console.log(timetable)
+        console.warn(jqXHR.responseText)
+        console.log("fail: ", textStatus, errorThrown);    
+    });             
+};        
 
 function sdCallback(data, id, course) {
     $('#details-div').html("");

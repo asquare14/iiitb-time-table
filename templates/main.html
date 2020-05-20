@@ -3,6 +3,8 @@
     <head>
       <!-- Global site tag (gtag.js) - Google Analytics -->
       <script async src="https://www.googletagmanager.com/gtag/js?id=UA-125060974-1"></script>
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
       <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
@@ -70,6 +72,16 @@
                 <div class="col-md-2">
                 </div>
             </div>
+            <script type=text/javascript>
+                $(function() {
+                    $('a#ics').bind('click', function() {
+                        $.getJSON('/ics_helper', function(data){
+                            // do nothing
+                        });
+                        return false;    
+                    });
+                });
+            </script> 
             <div class="row">
                 {% if not error %}
                     {% if name %}
@@ -103,6 +115,8 @@
                             {% endfor %}
                         </tbody>
                     </table>
+
+                <a href = # id=ics><button class='btn btn-default'>Download as ics</button></a>
                     {% endif %}
                 {% endif %}
 
@@ -133,15 +147,14 @@
 
                 <script>
                     var fullLink = window.location.href;
+                    console.log(fullLink)
                     var splitLink = fullLink.split('=');
                     if (splitLink.length>1) {
-                        console.log(splitLink)
-                        searchQuery = splitLink[1].replace(/%20/g, " ");
-                        console.log(searchQuery)
-                        var inputBox = document.getElementById("prof_query");
-                        inputBox.value=searchQuery;
-                        inputBox.focus();
-                    }
+                         searchQuery = splitLink[1].replace(/%20/g, " ");
+                         var inputBox = document.getElementById("prof_query");
+                         inputBox.value=searchQuery;
+                         inputBox.focus();
+                     }
                 </script>
             </div>
         </div>
