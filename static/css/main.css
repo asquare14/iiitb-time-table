@@ -1,5 +1,5 @@
 :root {
-  --main-color: #ec3654;
+  --main-color: #015483;
   --bg-color: #fff;
   --text-color: #2e2e2e;
   --search-color: #2e2e2e;
@@ -66,7 +66,7 @@ body {
 }
 
 .table tr:nth-child(2n) td.table-clash {
-  background: #00008B;
+  background: red;
 }
 
 .table tr th:nth-child(1) {
@@ -80,7 +80,7 @@ body {
 footer {
   display: flex;
   flex-grow: 1;
-  padding: 1rem 4rem;
+  padding: 1rem 2rem;
   color: var(--text-color);
 }
 
@@ -152,11 +152,15 @@ nav {
   justify-content: flex-end;
   align-items: center;
   padding: 1rem;
-  color: #fff;
-  background: var(--main-color);
+  color: #015483;
+  background:#D3D3D3;
 }
 
 nav .logo {
+  margin-right: auto;
+}
+
+nav .logo-text {
   margin-right: auto;
 }
 
@@ -293,7 +297,7 @@ ul.ui-autocomplete {
 
 li.course.active {
   border: 0px;
-  background-color: var(--main-color);
+  background-color: #015483;
   color: #fff;
 }
 
@@ -386,3 +390,30 @@ li.course.active {
 	-webkit-transition: .4s;
 	transition: .4s;
   }
+
+  .button {
+    display: inline-block;
+    border-radius: 4px;
+    background-color: #008CBA;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 12px;
+    padding: 15px;
+    width: 50px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+  }
+
+  .button2 {
+    background-color: white; 
+    color: black; 
+    border: 2px solid #008CBA;
+  }
+  
+  .button2:hover {
+    background-color: #008CBA;
+    color: white;
+  }
+  
