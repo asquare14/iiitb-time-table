@@ -1,0 +1,19 @@
+<html>
+<head>
+<link rel="stylesheet" href="css/style.css" type="text/css">
+</head>
+<body>
+<div class="nav1">
+<ul>
+  <div class="nav11">
+  <li><button class="button"><a href="">Students</a></button></li></div>
+  <div class="nav12">
+  <li><button class="button"><a href="">Faculty</a></button></li></div>
+  <div class="nav13">
+  <li><button class="button"><a href="">Rooms</a></button></li></div>
+</ul>
+</nav>
+
+</body>
+</html>
+
