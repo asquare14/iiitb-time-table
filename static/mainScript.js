@@ -21,7 +21,7 @@ function getTimeTable(){
     else
         todaysDay = todaysDay - 1;
     for (var i = 0; i < 5; ++i) {
-        for (var j = 0; j < 9; ++j) {
+        for (var j = 0; j < 5; ++j) {
             if($('#' + i.toString() + j.toString()).hasClass('table-danger') || $('#' + i.toString() + j.toString()).hasClass('table-clash')){
                 var curr = [];
                 curr.push($('#' + i.toString() + j.toString()).html())
@@ -44,40 +44,24 @@ function getTimeTable(){
                 var start = '' + ye + '-' + mo + '-' + da + ' ';
                 var end = start;
                 if(j == 0){
-                    start = start + '08:00:00';
-                    end = end + '08:00:55';
+                    start = start + '09:15:00';
+                    end = end + '10:45:00';
                 }
                 else if(j == 1){
-                    start = start + '09:00:00';
-                    end = end + '09:00:55';
+                    start = start + '11:00:00';
+                    end = end + '12:30:00';
                 }
                 else if(j == 2){
-                    start = start + '10:00:00';
-                    end = end + '10:00:55';
+                    start = start + '13:45:00';
+                    end = end + '15:15:00';
                 }
                 else if(j == 3){
-                    start = start + '11:00:00';
-                    end = end + '11:00:55';
+                    start = start + '15:30:00';
+                    end = end + '17:00:00';
                 }
                 else if(j == 4){
-                    start = start + '12:00:00';
-                    end = end + '12:00:55';
-                }
-                else if(j == 5){
-                    start = start + '14:00:00';
-                    end = end + '14:00:55';
-                }
-                else if(j == 6){
-                    start = start + '15:00:00';
-                    end = end + '15:00:55';
-                }
-                else if(j == 7){
-                    start = start + '16:00:00';
-                    end = end + '16:00:55';
-                }
-                else if(j == 8){
-                    start = start + '17:00:00';
-                    end = end + '17:00:55';
+                    start = start + '17:30:00';
+                    end = end + '19:00:00';
                 }
                 curr.push(start)
                 curr.push(end)
