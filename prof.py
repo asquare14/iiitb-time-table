@@ -83,6 +83,7 @@ def get_attr(prof_name, key):
         result = data[prof_name][key]
     except:
         pass
+    return result
 
 
 with open(os.path.join(script_dir, 'prof_data.json')) as f:
@@ -96,7 +97,7 @@ def fetch_results(prof):
     slot_data = get_times(prof)
     dept = get_attr(prof, 'dept')
     website = get_attr(prof, 'website')
-    course = profs_dict[prof]['course']    
+    course = profs_dict[prof]['course']
 
     if len(slot_data) == 0 and len(dept) == 0:
         abort(404)
