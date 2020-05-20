@@ -80,7 +80,7 @@ body {
 footer {
   display: flex;
   flex-grow: 1;
-  padding: 1rem 4rem;
+  padding: 1rem 2rem;
   color: var(--text-color);
 }
 
@@ -390,3 +390,30 @@ li.course.active {
 	-webkit-transition: .4s;
 	transition: .4s;
   }
+
+  .button {
+    display: inline-block;
+    border-radius: 4px;
+    background-color: #008CBA;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 12px;
+    padding: 15px;
+    width: 50px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+  }
+
+  .button2 {
+    background-color: white; 
+    color: black; 
+    border: 2px solid #008CBA;
+  }
+  
+  .button2:hover {
+    background-color: #008CBA;
+    color: white;
+  }
+  
