@@ -160,6 +160,10 @@ nav .logo {
   margin-right: auto;
 }
 
+nav .logo-text {
+  margin-right: auto;
+}
+
 nav a svg {
   text-decoration: none;
   color: #fff;
