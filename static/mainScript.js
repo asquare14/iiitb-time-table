@@ -114,6 +114,7 @@ function sdCallback(data, id, course) {
             details += "<b>Name: </b>" + data['Name'] + " <br>";
             courseData = data['Data'];
             for (var key in courseData) {
+                if(key!='Slot')
                 details += "<b>" + key + ": </b>" + courseData[key] + " <br>";
             }
             $('#details-div').html(details);
