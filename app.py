@@ -41,6 +41,7 @@ def result():
 	tb, times, dept, website, prof, course = fetch_results(prof)
 	return render_template('main.html', name=prof, website=website, data=tb, times=times, profs=profs, dept=dept,course=course, error=False)
 
+my_events = []
 @app.route('/professor', methods=['GET'])
 def main():
 	prof = request.args.get('prof')
@@ -51,6 +52,11 @@ def main():
 		return render_template('main.html', name=prof, website=website, data=tb, times=times, profs=profs, dept=dept,course=course, error=False)
 	else:
 		return render_template('main.html', profs=profs) 
+
+@app.route('/ics_helper')
+def ics_helper():
+	download_ics_file(my_events)
+	return ("")
 
 if __name__ == '__main__':
 
