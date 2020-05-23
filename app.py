@@ -15,7 +15,7 @@ minorFileName = os.path.join(script_dir, minorFileName)
 def home():
 	if request.method == 'POST':
 		data = request.json
-		download_ics_file(data)
+		return download_ics_file(data)
 		return jsonify(data)
 	return render_template('home.html')
 
