@@ -33,7 +33,6 @@ def minor():
 	with app.open_resource(minorFileName, 'r') as minorFile:
 		data = json.load(minorFile)
 	return json.dumps( data )
-	app.run(host='0.0.0.0', port=port, debug=True)
 
 @app.route('/professor', methods=['POST'])
 def result():
