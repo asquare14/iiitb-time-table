@@ -87,6 +87,9 @@ footer {
 footer .row {
   width: 30vw;
 }
+footer .col{
+  width: 20vw;
+}
 
 footer a {
   text-decoration: none;
@@ -431,7 +434,7 @@ li.course.active {
     background-position: -9999px -9999px;
     background-repeat: no-repeat;
 }
-  
+
   .button2:hover {
     background-color: #008CBA;
     color: white;
