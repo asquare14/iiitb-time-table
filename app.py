@@ -16,7 +16,6 @@ def home():
 	if request.method == 'POST':
 		data = request.json
 		return download_ics_file(data)
-		return jsonify(data)
 	return render_template('home.html')
 
 @app.route('/ajax/', methods=['POST'])
@@ -56,7 +55,6 @@ def main():
 
 @app.route('/ics_helper')
 def ics_helper():
-	print(my_events)
 	return download_ics_file(my_events)
 
 @app.route("/download_helper")
