@@ -20,6 +20,7 @@ def home():
 
 @app.route('/ajax/', methods=['POST'])
 def getCourse():
+	print(request)
 	query = request.form.get('query')
 	results = searchData(query)
 	if results:
@@ -33,11 +34,6 @@ def minor():
 		data = json.load(minorFile)
 	return json.dumps( data )
 
-@app.route('/professor', methods=['POST'])
-def result():
-	prof = request.form['prof']
-	tb, times, dept, website, prof, course = fetch_results(prof)
-	return render_template('main.html', name=prof, website=website, data=tb, times=times, profs=profs, dept=dept,course=course, error=False)
 
 my_events = []
 
@@ -45,6 +41,7 @@ my_events = []
 def main():
 	global my_events
 	prof = request.args.get('prof')
+	print(request)
 	if prof:
 		tb, times, dept, website, prof, course = fetch_results(prof)
 		my_events = format_data(tb)
