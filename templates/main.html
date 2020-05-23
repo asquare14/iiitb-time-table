@@ -175,8 +175,10 @@
                           {% endfor %}
                       </tbody>
                   </table>
-
-              <a href = # id=ics><button class='btn btn-default'>Download as ics</button></a>
+                  <form action = "/ics_helper">
+                        <button class='btn btn-default'>Download as ics</button>
+                    </form>
+              
                   {% endif %}
               {% endif %}
 
