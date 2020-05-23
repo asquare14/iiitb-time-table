@@ -17,7 +17,7 @@ it to their public calendar. :P
 ## Tech stack
 
 - Backend - Flask
-- Frontend - HTML and CSS
+- Frontend - HTML, CSS and JS.
 
 ## Installation
 
