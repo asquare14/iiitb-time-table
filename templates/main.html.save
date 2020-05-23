@@ -139,8 +139,103 @@
                 </div>
         			</div>
             </div>
-      		</aside>
+<<<<<<< a41a2ddd7d70c6c11a1e9278d7747fab0a05996b
+            <div class="row">
+                {% if not error %}
+                    {% if name %}
+                    <h3 class="display-4" style="margin-top: 2%;"> <a href="{{ website }}" target="_blank"> {{ name }} </a> | {{ dept }} </h3>
+                    <table class="table table-striped table-bordered table-hover
+                    text-center">
+                        <t
+head class="thead-light">
+                            <tr>
+                                {% for time in times %}
+                                <th class="col-md-1"> {{time}} </th>
+                                {% endfor %}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for row in data %}
+                            <tr>
+                                {% for col in row %}
+                                {% set outer_loop = loop %}
+                                <td class="col-md-1" style="padding: 0;">
+                                    {% for venue in col %}
+                                    <div class="venue">
+                                        {{ venue }}
+                                        {% if outer_loop.index > 1 %}
+                                            {{ course }}
+                                        {% endif %}
+                                    </div>
+                                    {% endfor %}
+                                </td>
+                                {% endfor %}
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
 
+                    <form action = "/ics_helper">
+                        <button class='btn btn-default'>Download as ics</button>
+                    </form>
+                    {% endif %}
+                {% endif %}
+
+                {% if error %}
+                <div style="margin-top: 4%; margin-bottom: 4%" class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="error-template text-center">
+                                <h1>Oops!</h1>
+                                <h2>Professor Not Found!</h2>
+                                <div class="error-details">
+                                        Sorry, we're unable to find the professor that you searched
+                                        for! Check the spelling of the professor's name. If you are
+                                        still unable to find their timetable, then ERP doesn't
+                                        contain their data.
+                                </div>
+                                <script>
+                                    document.getElementById("prof_query").focus();
+                                </script>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                        </div>
+                    </div>
+                </div>
+=======
+      		</aside>
+            <script type=text/javascript>
+                $(function() {
+                    $('a#ics').bind('click', function() {
+                        $.getJSON('/ics_helper', function(data){
+                            // do nothing
+                        });
+                        return false;
+                    });
+                });
+            </script>
+
+
+
+
+            <!-- <div class="timetable">
+              <table class="table " id="timet">
+                <thead>
+                  <tr>
+                    <th scope="col"></th>
+                    <th scope="col">9:15 <br /> 10:45</th>
+                    <th scope="col">11:00 <br /> 12:30</th>
+                    <th scope="col">1:45 <br /> 3:15</th>
+                    <th scope="col">3:30 <br /> 5:00</th>
+                    <th scope="col">5:30 <br /> 7:00</th> -->
+                    <!-- <th scope="col">14:00 <br /> 14:55</th>
+                    <th scope="col">15:00 <br /> 15:55</th>
+                    <th scope="col">16:00 <br /> 16:55</th>
+                    <th scope="col">17:00 <br /> 17:55</th> -->
+                  <!-- </tr> -->
+<!-- ////////////////////////////////////// -->
+>>>>>>> main.html changed
 
 
            <div class="timetable">
