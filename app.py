@@ -57,8 +57,18 @@ def main():
 @app.route('/ics_helper')
 def ics_helper():
 	print(my_events)
-	download_ics_file(my_events)
-	return ("")
+	return download_ics_file(my_events)
+
+@app.route("/getPlotCSV")
+def getPlotCSV():
+    # with open("outputs/Adjacency.csv") as fp:
+    #     csv = fp.read()
+    csv = '1,2,3\n4,5,6\n'
+    return Response(
+        csv,
+        mimetype="text/csv",
+        headers={"Content-disposition":
+                 "attachment; filename=myplot.csv"})
 
 if __name__ == '__main__':
 

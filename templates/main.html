@@ -92,7 +92,7 @@
             <script type=text/javascript>
                 $(function() {
                     $('a#ics').bind('click', function() {
-                        $.getJSON('/ics_helper', function(data){
+                        $.get('/ics_helper', function(data){
                             // do nothing
                         });
                         return false;    
@@ -133,7 +133,9 @@
                         </tbody>
                     </table>
 
-                <a href = # id=ics><button class='btn btn-default'>Download as ics</button></a>
+                    <form action = "/ics_helper">
+                        <button class='btn btn-default'>Download as ics</button>
+                    </form>
                     {% endif %}
                 {% endif %}
 
