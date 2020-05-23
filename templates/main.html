@@ -89,16 +89,6 @@
                 <div class="col-md-2">
                 </div>
             </div>
-            <script type=text/javascript>
-                $(function() {
-                    $('a#ics').bind('click', function() {
-                        $.get('/ics_helper', function(data){
-                            // do nothing
-                        });
-                        return false;    
-                    });
-                });
-            </script> 
             <div class="row">
                 {% if not error %}
                     {% if name %}
