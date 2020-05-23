@@ -15,8 +15,7 @@ minorFileName = os.path.join(script_dir, minorFileName)
 def home():
 	if request.method == 'POST':
 		data = request.json
-		download_ics_file(data)
-		return jsonify(data)
+		return download_ics_file(data)
 	return render_template('home.html')
 
 @app.route('/ajax/', methods=['POST'])
@@ -56,9 +55,11 @@ def main():
 
 @app.route('/ics_helper')
 def ics_helper():
-	print(my_events)
-	download_ics_file(my_events)
-	return ("")
+	return download_ics_file(my_events)
+
+@app.route("/download_helper")
+def func():
+    return download_ics_file(my_events)
 
 if __name__ == '__main__':
 

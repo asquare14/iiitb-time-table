@@ -46,6 +46,9 @@ def download_ics_file(my_events):
 		c.events.add(e)
 		c.events
 
-	with open('schedule.ics', 'w') as my_file:
-		my_file.writelines(c)
+	# with open('schedule.ics', 'w') as my_file:
+	# 	my_file.writelines(c)
+
+	return Response(c, mimetype="text/calendar", headers={"Content-disposition": "attachment; filename=schedule.ics"})
+
 
