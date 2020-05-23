@@ -7,13 +7,11 @@ language: python
 
 install:
 - sudo pip install --upgrade pip
-- pip install flask
-- pip install pytest
-- pip install requests
-- pip install ics
+- pip install -r requirements.txt
 
 script:
 - pytest
 
 after_success:
-– test “$TRAVIS_BRANCH” = “production-file-download” && sh .travis/deploy_heroku.sh
+- test “$TRAVIS_BRANCH” = “develop” && sh .travis/deploy_dockerhub.sh
+– test “$TRAVIS_BRANCH” = “develop” && sh .travis/deploy_heroku.sh 
