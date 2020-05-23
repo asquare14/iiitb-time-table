@@ -40,6 +40,7 @@
     	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.css">
     	<script src="https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.min.js"></script>
 
+      <link rel = "stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
     	<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
     </head>
     <body>
@@ -60,7 +61,7 @@
               {% if not error %}
                   {% if name %}
                   <h3 class="display-4" style="margin-top: 2%;"> <a href="{{ website }}" target="_blank"> {{ name }} </a> | {{ dept }} </h3>
-                  <table class="table" id="timet">
+                  <table class="table">
                       <thead>
                           <tr>
                               {% for time in times %}
@@ -133,9 +134,6 @@
               </script>
           </div>
           <aside class="sidebar">
-            <!-- <div class="container"> -->
-        			<div class="col">
-                <div class="col-md-2">
                     <br>
                     <p>
                     Select a name to see the weekly timetable of the
@@ -154,8 +152,6 @@
                         <ul class="list-group">
                         </ul>
                     </div>
-                </div>
-        			</div>
             <!-- </div> -->
       		</aside>
 
@@ -170,6 +166,7 @@
 				</div>
 				<div id="details-div"></div>
 			</footer> -->
+
 
 
 

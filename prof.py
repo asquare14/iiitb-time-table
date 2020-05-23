@@ -105,7 +105,7 @@ def fetch_results(prof):
     data = get_table(slot_data)
 
     for row in tb:
-        for i in range(5):
+        for i in range(4):
             row.append([])
 
     for item in data:

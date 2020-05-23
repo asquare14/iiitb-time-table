@@ -49,6 +49,7 @@ def main():
 		tb, times, dept, website, prof, course = fetch_results(prof)
 		my_events = format_data(tb)
 		print(my_events)
+		print(tb)
 		return render_template('main.html', name=prof, website=website, data=tb, times=times, profs=profs, dept=dept,course=course, error=False)
 	else:
 		return render_template('main.html', profs=profs) 
