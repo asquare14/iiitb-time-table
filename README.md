@@ -1,4 +1,10 @@
-# whats-slot-iiitb
+# Time Table for Professors and Students
+
+This site has two parts :
+
+## For Students
+
+- Our site 
 
 #### To install locally
 
