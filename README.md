@@ -19,11 +19,11 @@ it to their public calendar. :P
 - Backend - Flask
 - Frontend - HTML and CSS
 
-## Installing 
+## Installation
 
 There are two ways to run this project. You can run in natively by creating a virtual environment and installing the dependecies using requirements.txt or you can run the docker image.
 
-### Running it locally
+#### Running it locally
 
 Ensure you have virtual environment, pip, python3 installed.
 
