@@ -407,13 +407,32 @@ li.course.active {
   }
 
   .button2 {
-    background-color: white; 
-    color: black; 
-    border: 2px solid #008CBA;
-  }
+    display: inline-block;
+    position: relative;
+    z-index: 99998;
+    font-family: "Open Sans",Roboto,"Helvetica Neue",Helvetica,Optima,Segoe,"Segoe UI",Candara,Calibri,Arial,sans-serif;
+    color: #000!important;
+    font-weight: 600;
+    line-height: 100%;
+    background: #fff;
+    font-size: 15px;
+    text-decoration: none;
+    border: 1px solid transparent;
+    padding: 13px 12px 12px 13px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    cursor: pointer;
+    -webkit-font-smoothing: antialiased!important;
+    outline-color: rgba(0,78,255,0.5);
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
+    -webkit-user-select: none;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    box-shadow: 0 0 0 0.5px rgba(50,50,93,.17), 0 2px 5px 0 rgba(50,50,93,.1), 0 1px 1.5px 0 rgba(0,0,0,.07), 0 1px 2px 0 rgba(0,0,0,.08), 0 0 0 0 transparent!important;
+    background-position: -9999px -9999px;
+    background-repeat: no-repeat;
+}
   
   .button2:hover {
     background-color: #008CBA;
     color: white;
   }
-  
