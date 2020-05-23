@@ -79,15 +79,18 @@ function addToCalendar(){
         url: '/',
         type: 'post',
         contentType: 'application/json',
-        dataType: 'json',
+        dataType: 'text',
         data: timetable    
     }).done(function(result){
         console.log(result);
+        var url = '/download_helper';
+        window.location = url;
     }).fail(function(jqXHR, textStatus, errorThrown){
         console.log(timetable)
         console.warn(jqXHR.responseText)
         console.log("fail: ", textStatus, errorThrown);    
-    });             
+    });      
+
 };        
 
 function sdCallback(data, id, course) {

@@ -17,4 +17,4 @@ script:
 
 after_success:
 - sh .travis/deploy_dockerhub.sh
-– test “$TRAVIS_BRANCH” = “production-file-download” && sh .travis/deploy_heroku.sh
+– test “$TRAVIS_BRANCH” = “develop” && sh .travis/deploy_heroku.sh
