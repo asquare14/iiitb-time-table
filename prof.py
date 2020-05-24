@@ -96,12 +96,12 @@ def get_predefined():
     for row in tb:
         for i in range(4):
             row.append([])
-    timeslots = ['', '9:30 AM - 11:00 AM', '11:15 AM - 12:45 PM', '14:00 PM - 15:30 PM', '15:45 PM - 17:15 PM']
+    timeslots = ['', '9:30 - 11:00', '11:15 - 12:45', '14:00 - 15:30', '15:45 - 17:15']
     return [tb, timeslots]
 
 def fetch_results(prof):
     tb = [[['Monday']], [['Tuesday']], [['Wednesday']], [['Thursday']], [['Friday']]]
-    timeslots = ['', '9:30 AM - 11:00 AM', '11:15 AM - 12:45 PM', '14:00 PM - 15:30 PM', '15:45 PM - 17:15 PM']
+    timeslots = ['', '9:30 - 11:00', '11:15 - 12:45', '14:00 - 15:30', '15:45 - 17:15']
     slot_data = get_times(prof)
     dept = get_attr(prof, 'dept')
     website = get_attr(prof, 'website')

@@ -59,7 +59,7 @@
             <div class="timetable">
               {% if not error %}
                   {% if name %}
-                 
+
                   <table class="table" id="timet">
                       <thead>
                           <tr>
@@ -88,7 +88,7 @@
                           {% endfor %}
                       </tbody>
                   </table>
-                  
+
 
                   {% else %}
                     <table class="table" id="timet">
@@ -104,7 +104,7 @@
                           <tr>
                               {% for col in row %}
                               {% set outer_loop = loop %}
-                              <td class="col-md-1" style="padding: 0;">
+                              <td class="col-md-1" style="padding: 0; ">
                                   {% for venue in col %}
                                   <div class="venue">
                                       {{ venue }}
@@ -166,7 +166,7 @@
           </form>
         </div>
         <div id="details-div">
-           <b> Name : </b> {{ name }} </br> <b> Dept: </b> {{ dept }} 
+           <b> Name : </b> {{ name }} </br> <b> Dept: </b> {{ dept }}
         </div>
       </footer>
       {% endif %}
