@@ -51,7 +51,8 @@ def main():
 		print(my_events)
 		return render_template('main.html', name=prof, website=website, data=tb, times=times, profs=profs, dept=dept,course=course, error=False)
 	else:
-		return render_template('main.html', profs=profs) 
+		tb_predefined, times_predefined = get_predefined()
+		return render_template('main.html', profs=profs, times=times_predefined, data=tb_predefined) 
 
 @app.route('/ics_helper')
 def ics_helper():

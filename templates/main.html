@@ -59,7 +59,7 @@
             <div class="timetable">
               {% if not error %}
                   {% if name %}
-                  <h3 class="display-4" style="margin-top: 2%;"> <a href="{{ website }}" target="_blank"> {{ name }} </a> | {{ dept }} </h3>
+                 
                   <table class="table" id="timet">
                       <thead>
                           <tr>
@@ -88,11 +88,37 @@
                           {% endfor %}
                       </tbody>
                   </table>
-                  <form action = "/ics_helper">
-                        <button class='btn btn-default'>Download as ics</button>
-                    </form>
+                  
+
+                  {% else %}
+                    <table class="table" id="timet">
+                      <thead>
+                          <tr>
+                              {% for time in times %}
+                              <th scope="col"> {{time}} </th>
+                              {% endfor %}
+                          </tr>
+                      </thead>
+                      <tbody>
+                          {% for row in data %}
+                          <tr>
+                              {% for col in row %}
+                              {% set outer_loop = loop %}
+                              <td class="col-md-1" style="padding: 0;">
+                                  {% for venue in col %}
+                                  <div class="venue">
+                                      {{ venue }}
+                                  </div>
+                                  {% endfor %}
+                              </td>
+                              {% endfor %}
+                          </tr>
+                          {% endfor %}
+                      </tbody>
+                  </table>
 
                   {% endif %}
+
               {% endif %}
 
               {% if error %}
@@ -131,6 +157,19 @@
                        inputBox.focus();
                    }
               </script>
+
+      {% if name %}
+      <footer>
+        <div class="row">
+          <form action = "/ics_helper">
+            <button class='button2'><span>Download as ics</span></button>
+          </form>
+        </div>
+        <div id="details-div">
+           <b> Name : </b> {{ name }} </br> <b> Dept: </b> {{ dept }} 
+        </div>
+      </footer>
+      {% endif %}
           </div>
           <aside class="sidebar">
             <!-- <div class="container"> -->
@@ -160,16 +199,6 @@
       		</aside>
 
           </div>
-
-      <!-- <footer>
-				<div class="row">
-					<i class="info">Click on a slot to mark it as occupied</i>
-				</br></br>
-					<button class="button2" onclick="clearTT()"><span>Clear</span></button>
-					<button  class="button2" onclick="addToCalendar()"><span>Download ICS</span></button>
-				</div>
-				<div id="details-div"></div>
-			</footer> -->
 
 
 
