@@ -32,11 +32,11 @@ class BlogTestCase(unittest.TestCase):
         response = self.app.get('/professor', data = prof, content_type='application/text')
         assert response.status_code == 200
 
-    # def test_ajax_post(self):
-    #     data = {}
-    #     data["query"] = 'DS101'
-    #     response = self.app.post('/ajax/', data = data, content_type='application/text')
-    #     assert response.status_code == 200
+    def test_ajax_post(self):
+        data = {}
+        data["query"] = 'DS101'
+        response = self.app.post('/ajax/', data = dict(query='DS101'))
+        assert response.status_code == 200
 
 
 
