@@ -91,6 +91,14 @@ with open(os.path.join(script_dir, 'prof_data.json')) as f:
     profs.sort()
 
 
+def get_predefined():
+    tb = [[['Monday']], [['Tuesday']], [['Wednesday']], [['Thursday']], [['Friday']]]
+    for row in tb:
+        for i in range(4):
+            row.append([])
+    timeslots = ['', '9:30 AM - 11:00 AM', '11:15 AM - 12:45 PM', '14:00 PM - 15:30 PM', '15:45 PM - 17:15 PM']
+    return [tb, timeslots]
+
 def fetch_results(prof):
     tb = [[['Monday']], [['Tuesday']], [['Wednesday']], [['Thursday']], [['Friday']]]
     timeslots = ['', '9:30 AM - 11:00 AM', '11:15 AM - 12:45 PM', '14:00 PM - 15:30 PM', '15:45 PM - 17:15 PM']
@@ -105,7 +113,7 @@ def fetch_results(prof):
     data = get_table(slot_data)
 
     for row in tb:
-        for i in range(5):
+        for i in range(4):
             row.append([])
 
     for item in data:
