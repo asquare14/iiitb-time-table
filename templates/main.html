@@ -73,16 +73,22 @@
                           <tr>
                               {% for col in row %}
                               {% set outer_loop = loop %}
-                              <td class="col-md-1" style="padding: 0;">
-                                  {% for venue in col %}
-                                  <div class="venue">
-                                      {{ venue }}
-                                      {% if outer_loop.index > 1 %}
-                                          {{ course }}
-                                      {% endif %}
-                                  </div>
-                                  {% endfor %}
-                              </td>
+
+                              {% if col|length > 0 and outer_loop.index>1 %}
+                                <td class="table-danger">
+                                  {% else %}
+                                <td>
+                              {% endif %}
+                                    {% for venue in col %}
+                                    <div class="venue">
+                                        {{ venue }}
+                                        {% if outer_loop.index > 1 %}
+                                            {{ course }}
+                                        {% endif %}
+
+                                    </div>
+                                    {% endfor %}
+                                </td>
                               {% endfor %}
                           </tr>
                           {% endfor %}
