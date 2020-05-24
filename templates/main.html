@@ -3,9 +3,9 @@
     <head>
       <style>
         aside {
-          width: 30%;
+          width: 15%;
           padding-left: 15px;
-          margin-left: 15px;
+          margin-left: 0px;
           float: right;
           font-style: italic;
           background-color: lightgray;
@@ -42,111 +42,24 @@
 
     	<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
     </head>
-      <!-- Global site tag (gtag.js) - Google Analytics -->
-
-      <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-125060974-1"></script>
-      <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-      <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'UA-125060974-1');
-      </script>
-
-
-        <link rel="stylesheet"
-              href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-              integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-              crossorigin="anonymous">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title> Find your professor </title>
-
-        <style>
-
-        .venue {
-            border-bottom: 1px solid #DEE2E6;
-            padding: 10px;
-        }
-
-        .venue:nth-last-child(1) {
-            border-bottom: 0;
-        }
-
-        .venue:only-child {
-            border: 0;
-        }
-
-        </style> -->
-    <!-- <div class="container-fluid-nav text-center">
-              <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <img src="{{ url_for('static', filename='iiitb_logo.png') }}" alt="IIIT-B">
-                </button>
-                <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-                  <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                    <li class="nav-item active">
-                      <a class="nav-link" href="#"><span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <h1  class="text-center" style="color:#015483; margin-left:780px;">Faculty TimeTable</h1>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link disabled" href="#"></a>
-                    </li>
-                  </ul>
-                  <div class="form-inline my-2 my-lg-0">
-                   <span><a class="nav-link" href="/"><h3>Home</h3></a></span>
-                  </div>
-                </div>
-              </nav>
-        </div> -->
     <body>
         <div class="App">
           <div class="main-content">
-          <nav>
-            <div class="logo">
-              <img src="{{ url_for('static', filename='iiitb_logo.png') }}" alt="IIIT-B">
-            </div>
-            <div class="logo">
-            <a href="/"><h2>Home</h2></a>
-            </div>
-            <div class="logo">
-            <a href="/professor"><h2>Faculty</h2> </a>
-            </div>
-          </nav>
-          <aside class="sidebar">
-            <div class="container" style="margin-top:5px">
-        			<div class="row">
-                <div class="col-md-12">
-                    <br>
-                    <p>
-                    Select a name to see the weekly timetable of the
-                    professor!
-                    </p>
-                    {% if name %}
-                        <input name="prof"  autocomplete="off"
-                                            placeholder="Who are you looking for?"
-                                            class="form-control" id="prof_query" value="{{name}}">
-                    {% else %}
-                        <input name="prof"  autocomplete="off"
-                                            placeholder="Who are you looking for?"
-                                            class="form-control" id="prof_query">
-                    {% endif %}
-                    <div id="suggestions">
-                        <ul class="list-group">
-                        </ul>
-                    </div>
-                </div>
-        			</div>
-            </div>
-      		</aside>
-
-
-
-           <div class="timetable">
+            <nav>
+              <div class="logo">
+                <img src="{{ url_for('static', filename='iiitb_logo.png') }}" alt="IIIT-B">
+              </div>
+              <div class="logo">
+                <a href="/"><h2>Home</h2></a>
+              </div>
+              <div class="logo">
+                <a href="/professor"><h2>Faculty</h2> </a>
+              </div>
+            </nav>
+            <div class="timetable">
               {% if not error %}
                   {% if name %}
-                  <h3 class="display-4" style="margin-top: 2%;"> <a href="{{ website }}" target="_blank"> {{ name }} </a> | {{ dept }} </h3>
+                 
                   <table class="table" id="timet">
                       <thead>
                           <tr>
@@ -175,11 +88,37 @@
                           {% endfor %}
                       </tbody>
                   </table>
-                  <form action = "/ics_helper">
-                        <button class='btn btn-default'>Download as ics</button>
-                    </form>
-              
+                  
+
+                  {% else %}
+                    <table class="table" id="timet">
+                      <thead>
+                          <tr>
+                              {% for time in times %}
+                              <th scope="col"> {{time}} </th>
+                              {% endfor %}
+                          </tr>
+                      </thead>
+                      <tbody>
+                          {% for row in data %}
+                          <tr>
+                              {% for col in row %}
+                              {% set outer_loop = loop %}
+                              <td class="col-md-1" style="padding: 0;">
+                                  {% for venue in col %}
+                                  <div class="venue">
+                                      {{ venue }}
+                                  </div>
+                                  {% endfor %}
+                              </td>
+                              {% endfor %}
+                          </tr>
+                          {% endfor %}
+                      </tbody>
+                  </table>
+
                   {% endif %}
+
               {% endif %}
 
               {% if error %}
@@ -204,8 +143,8 @@
                       </div>
                   </div>
               </div>
-            </div>
               {% endif %}
+              </div>
 
               <script>
                   var fullLink = window.location.href;
@@ -218,22 +157,48 @@
                        inputBox.focus();
                    }
               </script>
+
+      {% if name %}
+      <footer>
+        <div class="row">
+          <form action = "/ics_helper">
+            <button class='button2'><span>Download as ics</span></button>
+          </form>
+        </div>
+        <div id="details-div">
+           <b> Name : </b> {{ name }} </br> <b> Dept: </b> {{ dept }} 
+        </div>
+      </footer>
+      {% endif %}
           </div>
+          <aside class="sidebar">
+            <!-- <div class="container"> -->
+        			<div class="col">
+                <div class="col-md-2">
+                    <br>
+                    <p>
+                    Select a name to see the weekly timetable of the
+                    professor!
+                    </p>
+                    {% if name %}
+                        <input name="prof"  autocomplete="off"
+                                            placeholder="Who are you looking for?"
+                                            class="form-control" id="prof_query" value="{{name}}">
+                    {% else %}
+                        <input name="prof"  autocomplete="off"
+                                            placeholder="Who are you looking for?"
+                                            class="form-control" id="prof_query">
+                    {% endif %}
+                    <div id="suggestions">
+                        <ul class="list-group">
+                        </ul>
+                    </div>
+                </div>
+        			</div>
+            <!-- </div> -->
+      		</aside>
+
           </div>
-
-          <!-- ////////////////////////////// -->
-      <!-- <footer>
-				<div class="row">
-					<i class="info">Click on a slot to mark it as occupied</i>
-				</br></br>
-					<button class="button2" onclick="clearTT()"><span>Clear</span></button>
-					<button  class="button2" onclick="addToCalendar()"><span>Download ICS</span></button>
-				</div>
-				<div id="details-div"></div>
-			</footer> -->
-
-
-    </div>
 
 
 

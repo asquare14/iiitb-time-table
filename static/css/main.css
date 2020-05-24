@@ -7,8 +7,8 @@
 
 
 body {
-	font-family: 'Roboto', sans-serif;
-	-webkit-transition: .4s;
+  font-family: 'Roboto', sans-serif;
+  -webkit-transition: .4s;
   transition: .4s;
   margin: 0;
   background: var(--bg-color);
@@ -86,6 +86,9 @@ footer {
 
 footer .row {
   width: 30vw;
+}
+footer .col{
+  width: 20vw;
 }
 
 footer a {
@@ -182,10 +185,10 @@ nav svg {
 #search-bar {
   border-radius: 6px;
   padding: 0 0 0 1rem;
-	border-top-right-radius: 0px;
-	border-bottom-right-radius: 0px;
-	height: 35px;
-	-webkit-transition: .4s;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  height: 35px;
+  -webkit-transition: .4s;
   transition: .4s;
   background: var(--bg-color);
   color: var(--text-color);
@@ -195,14 +198,14 @@ nav svg {
 #search-but {
   color: var(--text-color);
   background: var(--bg-color);
-	border: none;
-	border-top-right-radius: 6px;
-	border-bottom-right-radius: 6px;
-	width: 50px;
+  border: none;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+  width: 50px;
   height: 35px;
   font-size: 20px;
-	-webkit-transition: .4s;
-	transition: .4s;
+  -webkit-transition: .4s;
+  transition: .4s;
 }
 
 #search-but svg {
@@ -214,7 +217,7 @@ nav svg {
 }
 
 input[type=search] {
-	outline: none;
+  outline: none;
   width: 200px;
 }
 /*Css to target the dropdownbox*/
@@ -225,9 +228,9 @@ input[type=search] {
 }
 ul.ui-autocomplete {
   font-size: 0.8rem;
-	background: var(--bg-color);
-	z-index: 9999;
-	color: var(--text-color) !important;
+  background: var(--bg-color);
+  z-index: 9999;
+  color: var(--text-color) !important;
   border-radius: 6px;
   box-shadow: 0px 20px 40px -10px #2e2e2e75;
 }
@@ -309,7 +312,7 @@ li.course.active {
 
 /*footer form*/
 #det-footer {
-	border-radius: 4px;
+  border-radius: 4px;
 }
 
 #file-in {
@@ -324,71 +327,71 @@ li.course.active {
 
 /* toggle switch */
 .switch {
-	position: relative;
-	display: inline-block;
+  position: relative;
+  display: inline-block;
   width: 60px;
-	height: 34px;
+  height: 34px;
   }
 
   /* Hide default HTML checkbox */
   .switch input {
-	opacity: 0;
-	width: 0;
-	height: 0;
+  opacity: 0;
+  width: 0;
+  height: 0;
   }
 
   /* The slider */
   .slider {
-	position: absolute;
-	cursor: pointer;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	background-color: #f8f9fa;
-	-webkit-transition: .4s;
-	transition: .4s;
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #f8f9fa;
+  -webkit-transition: .4s;
+  transition: .4s;
   }
 
   .slider:before {
-	position: absolute;
-	content: "";
-	height: 24px;
-	width: 24px;
-	left: 4px;
-	bottom: 4px;
-	background-color: white;
-	-webkit-transition: .4s;
-	transition: .4s;
+  position: absolute;
+  content: "";
+  height: 24px;
+  width: 24px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
   }
 
   input:checked + .slider {
-	background-color: rgb(60, 56, 63);
+  background-color: rgb(60, 56, 63);
   }
 
   input:focus + .slider {
-	box-shadow: 0 0 1px rgb(63, 59, 63);
+  box-shadow: 0 0 1px rgb(63, 59, 63);
   }
 
   input:checked + .slider:before {
-	-webkit-transform: translateX(26px);
-	-ms-transform: translateX(26px);
-	transform: translateX(26px);
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
   }
 
   /* Rounded sliders */
   .slider.round {
-	border-radius: 34px;
+  border-radius: 34px;
   }
 
   .slider.round:before {
-	border-radius: 50%;
+  border-radius: 50%;
   }
   /* toggle switch ends */
 
   .card, .courses, .timetable {
-	-webkit-transition: .4s;
-	transition: .4s;
+  -webkit-transition: .4s;
+  transition: .4s;
   }
 
   .button {
@@ -431,8 +434,218 @@ li.course.active {
     background-position: -9999px -9999px;
     background-repeat: no-repeat;
 }
-  
+
   .button2:hover {
     background-color: #008CBA;
     color: white;
   }
+
+
+.list-group {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  padding-left: 0;
+  margin-bottom: 0;
+}
+
+.list-group-item-action {
+  width: 100%;
+  color: #495057;
+  text-align: inherit;
+}
+
+.list-group-item-action:focus,.list-group-item-action:hover {
+  color: #495057;
+  text-decoration: none;
+  background-color: #f8f9fa;
+}
+
+.list-group-item-action:active {
+  color: #212529;
+  background-color: #e9ecef;
+}
+
+.list-group-item {
+  position: relative;
+  display: block;
+  padding: .75rem 1.25rem;
+  margin-bottom: -1px;
+  background-color: #fff;
+  border: 1px solid rgba(0,0,0,.125);
+  text-decoration: none;
+}
+
+.list-group-item:first-child {
+  border-top-left-radius: .25rem;
+  border-top-right-radius: .25rem;
+}
+
+.list-group-item:last-child {
+  margin-bottom: 0;
+  border-bottom-right-radius: .25rem;
+  border-bottom-left-radius: .25rem;
+}
+
+.list-group-item:focus,.list-group-item:hover {
+  z-index: 1;
+  text-decoration: none;
+}
+
+.list-group-item.disabled,.list-group-item:disabled {
+  color: #6c757d;
+  background-color: #fff;
+}
+
+.list-group-item.active {
+  z-index: 2;
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.list-group-flush .list-group-item {
+  border-right: 0;
+  border-left: 0;
+  border-radius: 0;
+}
+
+.list-group-flush:first-child .list-group-item:first-child {
+  border-top: 0;
+}
+
+.list-group-flush:last-child .list-group-item:last-child {
+  border-bottom: 0;
+}
+
+.list-group-item-primary {
+  color: #004085;
+  background-color: #b8daff;
+}
+
+.list-group-item-primary.list-group-item-action:focus,.list-group-item-primary.list-group-item-action:hover {
+  color: #004085;
+  background-color: #9fcdff;
+}
+
+.list-group-item-primary.list-group-item-action.active {
+  color: #fff;
+  background-color: #004085;
+  border-color: #004085;
+}
+
+.list-group-item-secondary {
+  color: #383d41;
+  background-color: #d6d8db;
+}
+
+.list-group-item-secondary.list-group-item-action:focus,.list-group-item-secondary.list-group-item-action:hover {
+  color: #383d41;
+  background-color: #c8cbcf;
+}
+
+.list-group-item-secondary.list-group-item-action.active {
+  color: #fff;
+  background-color: #383d41;
+  border-color: #383d41;
+}
+
+.list-group-item-success {
+  color: #155724;
+  background-color: #c3e6cb;
+}
+
+.list-group-item-success.list-group-item-action:focus,.list-group-item-success.list-group-item-action:hover {
+  color: #155724;
+  background-color: #b1dfbb;
+}
+
+.list-group-item-success.list-group-item-action.active {
+  color: #fff;
+  background-color: #155724;
+  border-color: #155724;
+}
+
+.list-group-item-info {
+  color: #0c5460;
+  background-color: #bee5eb;
+}
+
+.list-group-item-info.list-group-item-action:focus,.list-group-item-info.list-group-item-action:hover {
+  color: #0c5460;
+  background-color: #abdde5;
+}
+
+.list-group-item-info.list-group-item-action.active {
+  color: #fff;
+  background-color: #0c5460;
+  border-color: #0c5460;
+}
+
+.list-group-item-warning {
+  color: #856404;
+  background-color: #ffeeba;
+}
+
+.list-group-item-warning.list-group-item-action:focus,.list-group-item-warning.list-group-item-action:hover {
+  color: #856404;
+  background-color: #ffe8a1;
+}
+
+.list-group-item-warning.list-group-item-action.active {
+  color: #fff;
+  background-color: #856404;
+  border-color: #856404;
+}
+
+.list-group-item-danger {
+  color: #721c24;
+  background-color: #f5c6cb;
+}
+
+.list-group-item-danger.list-group-item-action:focus,.list-group-item-danger.list-group-item-action:hover {
+  color: #721c24;
+  background-color: #f1b0b7;
+}
+
+.list-group-item-danger.list-group-item-action.active {
+  color: #fff;
+  background-color: #721c24;
+  border-color: #721c24;
+}
+
+.list-group-item-light {
+  color: #818182;
+  background-color: #fdfdfe;
+}
+
+.list-group-item-light.list-group-item-action:focus,.list-group-item-light.list-group-item-action:hover {
+  color: #818182;
+  background-color: #ececf6;
+}
+
+.list-group-item-light.list-group-item-action.active {
+  color: #fff;
+  background-color: #818182;
+  border-color: #818182;
+}
+
+.list-group-item-dark {
+  color: #1b1e21;
+  background-color: #c6c8ca;
+}
+
+.list-group-item-dark.list-group-item-action:focus,.list-group-item-dark.list-group-item-action:hover {
+  color: #1b1e21;
+  background-color: #b9bbbe;
+}
+
+.list-group-item-dark.list-group-item-action.active {
+  color: #fff;
+  background-color: #1b1e21;
+  border-color: #1b1e21;
+}
