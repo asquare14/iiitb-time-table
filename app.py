@@ -14,7 +14,7 @@ minorFileName = os.path.join(script_dir, minorFileName)
 
 formatter = json_log_formatter.JSONFormatter()
 
-json_handler = logging.FileHandler(filename='my-log.json')
+json_handler = logging.FileHandler(filename='my-log.log')
 json_handler.setFormatter(formatter)
 
 logger = logging.getLogger('my_json')
