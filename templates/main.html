@@ -179,14 +179,19 @@
       {% endif %}
           </div>
           <aside class="sidebar">
-            <!-- <div class="container"> -->
+            <style>
+                h1, h2, h3, h4, h5, h6, h7{
+                  font-weight: normal;
+                }
+            </style>
+            <div class="container" style="margin-top:5px">
         			<div class="col">
                 <div class="col-md-2">
                     <br>
-                    <p>
+                    <h4>
                     Select a name to see the weekly timetable of the
                     professor!
-                    </p>
+                    </h4>
                     {% if name %}
                         <input name="prof"  autocomplete="off"
                                             placeholder="Who are you looking for?"
@@ -202,7 +207,7 @@
                     </div>
                 </div>
         			</div>
-            <!-- </div> -->
+            </div>
       		</aside>
 
           </div>

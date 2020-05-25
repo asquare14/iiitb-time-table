@@ -1,5 +1,6 @@
 myenv/
 *.ics
+*.log
 *.pyc
 __pycache__/
 
