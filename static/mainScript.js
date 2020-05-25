@@ -10,6 +10,7 @@ function clearTT() {
         }
     }
     clearSelected();
+    $('#details-div').html("");
 }
 
 function getTimeTable(){
@@ -94,32 +95,58 @@ function addToCalendar(){
 };        
 
 function sdCallback(data, id, course) {
-    $('#details-div').html("");
+    console.log("yo")
     if (typeof data['Name'] !== "undefined") {
         if (id === undefined) {
             var details = "";
+            var x = 0;
             details += "<b>Name: </b>" + data['Name'] + " <br>";
             courseData = data['Data'];
             for (var key in courseData) {
-                if(key!='Slot')
-                details += "<b>" + key + ": </b>" + courseData[key] + " <br>";
+                if(key != 'Slot'){
+                    console.log(key)
+                    details += "<b>" + key + ": </b>" + courseData[key] + " <br>";
+                }
             }
-            $('#details-div').html(details);
 
             for (var slot in courseData['Slot']) {
                 $('#' + courseData['Slot'][slot]).addClass('border border-danger');
                 if($('#' + courseData['Slot'][slot]).hasClass('table-danger')){
                     $('#' + courseData['Slot'][slot]).removeClass('table-danger');
                     $('#' + courseData['Slot'][slot]).addClass('table-clash');
-                    
+                    x = 1;
                 }
                 else{
                     $('#' + courseData['Slot'][slot]).addClass('table-danger');
                     $('#' + courseData['Slot'][slot]).html(data['Name'].split(':')[0])
                 }
             }
+            if(x == 0){
+                $('#details-div').html("");
+                $('#details-div').html(details);
+            }
+            else{
+                old_name = $('#details-div').html();
+                console.log(old_name)
+                var i;
+                details_old = "";
+                for(i = 13; i < old_name.length; i++){
+                    if(old_name[i] == '<')
+                        break
+                    details_old += old_name[i];
+                }
+                console.log(details);
+                $('#details-div').html("");
+                details = "";
+                if(old_name.length > 0)
+                    details += "<b>Warning!! </b> <br>" + "Courses " + details_old + " and " + data['Name']+ " clash <br>"
+                else
+                    details += "<b>Warning!! </b> <br>" + "Your occupied slot and Course " + data['Name']+ " clash <br>"
+                $('#details-div').html(details);
+            }
         }
         else {
+            $('#details-div').html("");
             parentList = document.getElementById(id);
             var item = document.createElement('li');
             item.className = "course";
