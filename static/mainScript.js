@@ -108,40 +108,41 @@ function sdCallback(data, id, course) {
                     details += "<b>" + key + ": </b>" + courseData[key] + " <br>";
                 }
             }
-
+            var old_name = []
             for (var slot in courseData['Slot']) {
                 $('#' + courseData['Slot'][slot]).addClass('border border-danger');
                 if($('#' + courseData['Slot'][slot]).hasClass('table-danger')){
                     $('#' + courseData['Slot'][slot]).removeClass('table-danger');
                     $('#' + courseData['Slot'][slot]).addClass('table-clash');
+                    curr_name = $('#' + courseData['Slot'][slot]).html()
+                    if(curr_name.length == 0)
+                        curr_name = "your occupied slot";
+                    if(old_name.includes(curr_name) == 0)
+                        old_name.push(curr_name)
                     x = 1;
-                }
-                else{
-                    $('#' + courseData['Slot'][slot]).addClass('table-danger');
-                    $('#' + courseData['Slot'][slot]).html(data['Name'].split(':')[0])
                 }
             }
             if(x == 0){
                 $('#details-div').html("");
                 $('#details-div').html(details);
+                for (var slot in courseData['Slot']) {
+                    $('#' + courseData['Slot'][slot]).addClass('border border-danger');
+                    $('#' + courseData['Slot'][slot]).addClass('table-danger');
+                    $('#' + courseData['Slot'][slot]).html(data['Name'].split(':')[0])
+                }
             }
             else{
-                old_name = $('#details-div').html();
-                console.log(old_name)
-                var i;
-                details_old = "";
-                for(i = 13; i < old_name.length; i++){
-                    if(old_name[i] == '<')
-                        break
-                    details_old += old_name[i];
-                }
-                console.log(details);
                 $('#details-div').html("");
-                details = "";
-                if(old_name.length > 0)
-                    details += "<b>Warning!! </b> <br>" + "Courses " + details_old + " and " + data['Name']+ " clash <br>"
-                else
-                    details += "<b>Warning!! </b> <br>" + "Your occupied slot and Course " + data['Name']+ " clash <br>"
+                details = "<b> Warning!! </b><br> Course " + data['Name'] + " clashes with "
+                var i = 0
+                for(i = 0; i < old_name.length; i++){
+                    if(i > 0 && i < old_name.length - 1)
+                        details += ", ";
+                    else if(i >0 && i == old_name.length - 1)
+                        details += "and ";
+                    details += old_name[i]
+                }
+                details += ".";
                 $('#details-div').html(details);
             }
         }
@@ -258,6 +259,7 @@ function toggle(el) {
     element = $(el);
     if (element.hasClass('table-danger')){
         element.removeClass('table-danger');
+        element.removeClass('border-border-danger');
     }
     else{
         element.addClass('table-danger');
