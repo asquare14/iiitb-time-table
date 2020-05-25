@@ -1,4 +1,4 @@
-if [ "$TRAVIS_BRANCH" = "master" ]; then
+if [ "$TRAVIS_BRANCH" = "develop" ]; then
 TAG="latest"
 else
 TAG="$TRAVIS_BRANCH"
