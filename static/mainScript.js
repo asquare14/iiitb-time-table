@@ -257,9 +257,14 @@ setTimeout(
 
 function toggle(el) {
     element = $(el);
-    if (element.hasClass('table-danger') && element.html().length == 0){
-        element.removeClass('table-danger');
-        element.removeClass('border-border-danger');
+    if (element.hasClass('table-danger')){
+        if(element.html().length == 0){
+            element.removeClass('table-danger');
+            element.removeClass('border-border-danger');
+            details = "You clearerd an occupied slot";
+            $('#details-div').html("");
+            $('#details-div').html(details);
+        }
     }
     else{
         element.addClass('table-danger');
