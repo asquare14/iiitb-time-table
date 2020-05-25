@@ -70,7 +70,7 @@ function getTimeTable(){
             }
         }
     }
-    console.log(timetable)
+    // console.log(timetable)
     return timetable
 }
 
@@ -94,66 +94,112 @@ function addToCalendar(){
 
 };        
 
-function sdCallback(data, id, course) {
-    console.log("yo")
-    if (typeof data['Name'] !== "undefined") {
-        if (id === undefined) {
-            var details = "";
-            var x = 0;
-            details += "<b>Name: </b>" + data['Name'] + " <br>";
-            courseData = data['Data'];
-            for (var key in courseData) {
-                if(key != 'Slot'){
-                    console.log(key)
-                    details += "<b>" + key + ": </b>" + courseData[key] + " <br>";
+function sdCallback(data, id, course, clear_var) {
+    if(clear_var == 0){
+        if (typeof data['Name'] !== "undefined") {
+            if (id === undefined) {
+                var details = "";
+                var x = 0;
+                details += "<b>Name: </b>" + data['Name'] + " <br>";
+                courseData = data['Data'];
+                for (var key in courseData) {
+                    if(key != 'Slot'){
+                        details += "<b>" + key + ": </b>" + courseData[key] + " <br>";
+                    }
                 }
-            }
-            var old_name = []
-            for (var slot in courseData['Slot']) {
-                $('#' + courseData['Slot'][slot]).addClass('border border-danger');
-                if($('#' + courseData['Slot'][slot]).hasClass('table-danger')){
-                    $('#' + courseData['Slot'][slot]).removeClass('table-danger');
-                    $('#' + courseData['Slot'][slot]).addClass('table-clash');
-                    curr_name = $('#' + courseData['Slot'][slot]).html()
-                    if(curr_name.length == 0)
-                        curr_name = "your occupied slot";
-                    if(old_name.includes(curr_name) == 0)
-                        old_name.push(curr_name)
-                    x = 1;
-                }
-            }
-            if(x == 0){
-                $('#details-div').html("");
-                $('#details-div').html(details);
+                var old_name = []
                 for (var slot in courseData['Slot']) {
-                    $('#' + courseData['Slot'][slot]).addClass('border border-danger');
-                    $('#' + courseData['Slot'][slot]).addClass('table-danger');
-                    $('#' + courseData['Slot'][slot]).html(data['Name'].split(':')[0])
+                    if($('#' + courseData['Slot'][slot]).hasClass('table-danger')){
+                        $('#' + courseData['Slot'][slot]).removeClass('table-danger');
+                        $('#' + courseData['Slot'][slot]).addClass('table-clash');
+                        var cnt = parseInt($('#' + '9' + courseData['Slot'][slot]).html());
+                        cnt = cnt + 1
+                        $('#9' + courseData['Slot'][slot]).html(cnt)
+                        console.log(cnt)
+                        curr_name = $('#' + courseData['Slot'][slot]).html()
+                        if(curr_name.length == 0)
+                            curr_name = "your occupied slot";
+                        if(old_name.includes(curr_name) == 0)
+                            old_name.push(curr_name)
+                        x = 1;
+                    }
+                }
+                if(x == 0){
+                    $('#details-div').html("");
+                    $('#details-div').html(details);
+                    for (var slot in courseData['Slot']) {
+                        $('#' + courseData['Slot'][slot]).addClass('border border-danger');
+                        console.log("1")
+                        $('#' + courseData['Slot'][slot]).addClass('table-danger');
+                        $('#' + courseData['Slot'][slot]).html(data['Name'].split(':')[0])
+                        $('#' + '9' + courseData['Slot'][slot]).html("1")
+                    }
+                }
+                else{
+                    $('#details-div').html("");
+                    details = "<b> Warning!! </b><br> Course " + data['Name'] + " clashes with "
+                    var i = 0
+                    for(i = 0; i < old_name.length; i++){
+                        if(i > 0 && i < old_name.length - 1)
+                            details += ", ";
+                        else if(i >0 && i == old_name.length - 1)
+                            details += "and ";
+                        details += old_name[i]
+                    }
+                    details += ".";
+                    $('#details-div').html(details);
                 }
             }
-            else{
+            else {
                 $('#details-div').html("");
-                details = "<b> Warning!! </b><br> Course " + data['Name'] + " clashes with "
-                var i = 0
-                for(i = 0; i < old_name.length; i++){
-                    if(i > 0 && i < old_name.length - 1)
-                        details += ", ";
-                    else if(i >0 && i == old_name.length - 1)
-                        details += "and ";
-                    details += old_name[i]
-                }
-                details += ".";
-                $('#details-div').html(details);
+                parentList = document.getElementById(id);
+                var item = document.createElement('li');
+                item.className = "course";
+                item.setAttribute("onclick", "searchData(this)");
+                item.innerHTML = course;
+                parentList.appendChild(item);
             }
         }
-        else {
-            $('#details-div').html("");
-            parentList = document.getElementById(id);
-            var item = document.createElement('li');
-            item.className = "course";
-            item.setAttribute("onclick", "searchData(this)");
-            item.innerHTML = course;
-            parentList.appendChild(item);
+    }
+    else{
+        if (typeof data['Name'] !== "undefined") {
+            if (id === undefined) {
+                var details = "";
+                var x = 0;
+                details += "<b>Name: </b>" + data['Name'] + " <br>";
+                courseData = data['Data'];
+                for (var key in courseData) {
+                    if(key != 'Slot'){
+                        details += "<b>" + key + ": </b>" + courseData[key] + " <br>";
+                    }
+                }
+                for (var slot in courseData['Slot']) {
+                    if($('#' + courseData['Slot'][slot]).hasClass('table-danger')){
+                        $('#' + courseData['Slot'][slot]).removeClass('table-danger');
+                        $('#' + courseData['Slot'][slot]).removeClass('border border-danger');                        
+                        $('#' + courseData['Slot'][slot]).html("")
+                        $('#9' + courseData['Slot'][slot]).html("")
+                    }
+                    else if($('#' + courseData['Slot'][slot]).hasClass('table-clash')){
+                        var cnt = parseInt($('#' + '9' + courseData['Slot'][slot]).html());
+                        cnt = cnt - 1;
+                        if(cnt == 1){
+                            $('#' + courseData['Slot'][slot]).removeClass('table-clash');
+                            $('#' + courseData['Slot'][slot]).addClass('table-danger');                       
+                        }
+                        $('#9' + courseData['Slot'][slot]).html(cnt)
+                    }
+                }   
+            }
+            else {
+                $('#details-div').html("");
+                parentList = document.getElementById(id);
+                var item = document.createElement('li');
+                item.className = "course";
+                item.setAttribute("onclick", "searchData(this)");
+                item.innerHTML = course;
+                parentList.appendChild(item);
+            }
         }
     }
 }
@@ -164,13 +210,18 @@ function clearSelected() {
 
 
 function searchData(q = $("#search-bar").val(), id = undefined) {
+    clear_var = 0
     if(typeof q.className !== "undefined" && q.className.length == 13){
-        return;
+        clear_var = 1;
+        console.log("yo")
     }
     var searchString = "";
     if (typeof q !== "string") {
         searchString = q.innerHTML; // Get list item's name
-        q.className += ' active';
+        if(clear_var == 0)
+            q.className += ' active';
+        else
+            q.className = 'course'
     }
     else {
         searchString = q;
@@ -180,7 +231,7 @@ function searchData(q = $("#search-bar").val(), id = undefined) {
             "query": searchString
         },
         function (data) {
-            sdCallback(data, id, searchString);
+            sdCallback(data, id, searchString, clear_var);
         },
         "json"
     );
@@ -257,13 +308,15 @@ setTimeout(
 
 function toggle(el) {
     element = $(el);
+    element_id = element.attr('id')
     if (element.hasClass('table-danger')){
         if(element.html().length == 0){
             element.removeClass('table-danger');
-            element.removeClass('border-border-danger');
+            element.removeClass('border border-danger');
             details = "You clearerd an occupied slot";
             $('#details-div').html("");
             $('#details-div').html(details);
+            $('#9' + element_id).html("")
         }
     }
     else{
@@ -271,7 +324,9 @@ function toggle(el) {
         details = "You marked a slot as occupied";
         $('#details-div').html("");
         $('#details-div').html(details);
+        $('#9' + element_id).html("1")
     }
+    // console.log($('#9' + element_id).html())
 }
 
 $('#timet td').attr('onclick', 'toggle(this)');
