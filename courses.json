@@ -4,5 +4,11 @@
     {"Name": "DS101: Computer Vision", 
         "Data": {"Faculty": "DBJ", "Credits": "4", "Slot": "E4", "Room": "R204"}},
     {"Name": "NC101: Advanced Computer Networks", 
-        "Data": {"Faculty": "Debabrata Das", "Credits": "4", "Slot": "F4", "Room": "NC342"}}
+        "Data": {"Faculty": "Debabrata Das", "Credits": "4", "Slot": "F4", "Room": "NC342"}},
+    {"Name": "DS601: Data Modelling", 
+        "Data": {"Faculty": "R Chandrashekhar", "Credits": "4", "Slot": "N2", "Room": "R103"}},
+    {"Name": "HSS101: Ethics", 
+        "Data": {"Faculty": "Chetan Parikh", "Credits": "4", "Slot": "A1", "Room": "R108"}},
+    {"Name": "CS304: Automata Theory", 
+        "Data": {"Faculty": "Shrisha Rao", "Credits": "4", "Slot": "S3", "Room": "R105"}}
 ]
