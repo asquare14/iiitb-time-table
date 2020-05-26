@@ -1,6 +1,9 @@
 {"B Thangaraju": 
     {"dept": "CS", "course": "SPE", "website": "https://www.iiitb.ac.in/faculty/thangaraju-b", 
     "timetable": [[["02", "33", "41", "42"], ["R106"]]]}, 
+"B Thangaraju": 
+    {"dept": "CS", "course": "OS", "website": "https://www.iiitb.ac.in/faculty/thangaraju-b", 
+    "timetable": [[["03", "23", "44"], ["R106"]]]}, 
 "Bidisha Chaudhuri": 
     {"dept": "Sociology","course": "History of Ideas", "website": "https://www.iiitb.ac.in/faculty/bidisha-chaudhuri", 
     "timetable": [[["22", "31", "41", "43"], ["MCR106"]]]},
