@@ -50,9 +50,9 @@ def minor():
 @app.route('/professor', methods=['POST'])
 def result():
 	prof = request.form['prof']
-	tb, times, dept, website, prof, course = fetch_results(prof)
+	tb, times, dept, website, prof = fetch_results(prof)
 	logger.info('prof')
-	return render_template('main.html', name=prof, website=website, data=tb, times=times, profs=profs, dept=dept,course=course, error=False)
+	return render_template('main.html', name=prof, website=website, data=tb, times=times, profs=profs, dept=dept, error=False)
 
 my_events = []
 
@@ -61,10 +61,10 @@ def main():
 	global my_events
 	prof = request.args.get('prof')
 	if prof:
-		tb, times, dept, website, prof, course = fetch_results(prof)
+		tb, times, dept, website, prof = fetch_results(prof)
 		my_events = format_data(tb)
 		logger.info('Get Prof Info')
-		return render_template('main.html', name=prof, website=website, data=tb, times=times, profs=profs, dept=dept,course=course, error=False)
+		return render_template('main.html', name=prof, website=website, data=tb, times=times, profs=profs, dept=dept, error=False)
 	else:
 		tb_predefined, times_predefined = get_predefined()
 		return render_template('main.html', profs=profs, times=times_predefined, data=tb_predefined) 

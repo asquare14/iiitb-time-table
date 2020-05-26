@@ -105,7 +105,6 @@ def fetch_results(prof):
     slot_data = get_times(prof)
     dept = get_attr(prof, 'dept')
     website = get_attr(prof, 'website')
-    course = profs_dict[prof]['course']
 
     if len(slot_data) == 0 and len(dept) == 0:
         abort(404)
@@ -122,4 +121,4 @@ def fetch_results(prof):
                 venue = 'In Dept'
             tb[int(item[0])][int(item[1])+1].append(venue)
 
-    return [tb, timeslots, dept, website, prof.title(), course]
+    return [tb, timeslots, dept, website, prof.title()]
