@@ -2,19 +2,27 @@
 	{
 		"Name" : "Core",
 		"Courses" : [
-			"CS101"
+			"CS101",
+			"CS304"
 		]
 	},
 	{
 		"Name" : "Data Science",
 		"Courses" : [
-			"DS101"
+			"DS101",
+			"DS601"
 		]
 	},
 	{
 		"Name" : "Networks",
 		"Courses" : [
 			"NC101"
+		]
+	},
+	{
+		"Name" : "HSS",
+		"Courses" :[
+			"HSS101"
 		]
 	}
 ]
