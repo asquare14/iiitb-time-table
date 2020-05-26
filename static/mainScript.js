@@ -70,7 +70,6 @@ function getTimeTable(){
             }
         }
     }
-    // console.log(timetable)
     return timetable
 }
 
@@ -109,13 +108,14 @@ function sdCallback(data, id, course, clear_var) {
                 }
                 var old_name = []
                 for (var slot in courseData['Slot']) {
-                    if($('#' + courseData['Slot'][slot]).hasClass('table-danger')){
-                        $('#' + courseData['Slot'][slot]).removeClass('table-danger');
-                        $('#' + courseData['Slot'][slot]).addClass('table-clash');
+                    if($('#' + courseData['Slot'][slot]).hasClass('table-danger') || $('#' + courseData['Slot'][slot]).hasClass('table-clash')){
+                        if($('#' + courseData['Slot'][slot]).hasClass('table-danger')){
+                            $('#' + courseData['Slot'][slot]).removeClass('table-danger');
+                            $('#' + courseData['Slot'][slot]).addClass('table-clash');
+                        }
                         var cnt = parseInt($('#' + '9' + courseData['Slot'][slot]).html());
                         cnt = cnt + 1
                         $('#9' + courseData['Slot'][slot]).html(cnt)
-                        console.log(cnt)
                         curr_name = $('#' + courseData['Slot'][slot]).html()
                         if(curr_name.length == 0)
                             curr_name = "your occupied slot";
@@ -129,7 +129,6 @@ function sdCallback(data, id, course, clear_var) {
                     $('#details-div').html(details);
                     for (var slot in courseData['Slot']) {
                         $('#' + courseData['Slot'][slot]).addClass('border border-danger');
-                        console.log("1")
                         $('#' + courseData['Slot'][slot]).addClass('table-danger');
                         $('#' + courseData['Slot'][slot]).html(data['Name'].split(':')[0])
                         $('#' + '9' + courseData['Slot'][slot]).html("1")
@@ -146,7 +145,8 @@ function sdCallback(data, id, course, clear_var) {
                             details += "and ";
                         details += old_name[i]
                     }
-                    details += ".";
+                    details += ".<br>";
+                    details += "Unselect " + data['Name'].split(':')[0] + " to continue."
                     $('#details-div').html(details);
                 }
             }
@@ -165,20 +165,15 @@ function sdCallback(data, id, course, clear_var) {
         if (typeof data['Name'] !== "undefined") {
             if (id === undefined) {
                 var details = "";
-                var x = 0;
-                details += "<b>Name: </b>" + data['Name'] + " <br>";
                 courseData = data['Data'];
-                for (var key in courseData) {
-                    if(key != 'Slot'){
-                        details += "<b>" + key + ": </b>" + courseData[key] + " <br>";
-                    }
-                }
                 for (var slot in courseData['Slot']) {
                     if($('#' + courseData['Slot'][slot]).hasClass('table-danger')){
-                        $('#' + courseData['Slot'][slot]).removeClass('table-danger');
-                        $('#' + courseData['Slot'][slot]).removeClass('border border-danger');                        
-                        $('#' + courseData['Slot'][slot]).html("")
-                        $('#9' + courseData['Slot'][slot]).html("")
+                        if((data['Name'].split(':')[0].toString().localeCompare($('#' + courseData['Slot'][slot]).html().toString())) == 0) {
+                            $('#' + courseData['Slot'][slot]).removeClass('table-danger');
+                            $('#' + courseData['Slot'][slot]).removeClass('border border-danger');                        
+                            $('#' + courseData['Slot'][slot]).html("")
+                            $('#9' + courseData['Slot'][slot]).html("")
+                        }
                     }
                     else if($('#' + courseData['Slot'][slot]).hasClass('table-clash')){
                         var cnt = parseInt($('#' + '9' + courseData['Slot'][slot]).html());
@@ -189,7 +184,8 @@ function sdCallback(data, id, course, clear_var) {
                         }
                         $('#9' + courseData['Slot'][slot]).html(cnt)
                     }
-                }   
+                }
+                $('#details-div').html("");   
             }
             else {
                 $('#details-div').html("");
@@ -213,7 +209,6 @@ function searchData(q = $("#search-bar").val(), id = undefined) {
     clear_var = 0
     if(typeof q.className !== "undefined" && q.className.length == 13){
         clear_var = 1;
-        console.log("yo")
     }
     var searchString = "";
     if (typeof q !== "string") {
@@ -326,7 +321,6 @@ function toggle(el) {
         $('#details-div').html(details);
         $('#9' + element_id).html("1")
     }
-    // console.log($('#9' + element_id).html())
 }
 
 $('#timet td').attr('onclick', 'toggle(this)');

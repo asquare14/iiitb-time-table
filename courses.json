@@ -4,6 +4,5 @@
     {"Name": "DS101: Computer Vision", 
         "Data": {"Faculty": "DBJ", "Credits": "4", "Slot": "E4", "Room": "R204"}},
     {"Name": "NC101: Advanced Computer Networks", 
-        "Data": {"Faculty": "Debabrata Das", "Credits": "4", "Slot": "E4", "Room": "NC342"}}
-
+        "Data": {"Faculty": "Debabrata Das", "Credits": "4", "Slot": "F4", "Room": "NC342"}}
 ]
