@@ -7,10 +7,10 @@ function autocomplete(datalist, worker) {
     var suggestions = document.getElementById('suggestions');
 
 
-    // fuzzy search
     worker.postMessage({type: 'data', data: datalist});
 
     worker.onmessage = function(results) {
+        console.log(results)
         displayResult(results.data);
 
         processing = false;
@@ -25,7 +25,7 @@ function autocomplete(datalist, worker) {
     function search(query) {
         currentQuery = query;
         processing = true;
-        console.log("uff")
+        console.log(query)
         worker.postMessage({type: 'query', query: query}); 
     }
 

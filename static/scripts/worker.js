@@ -5,6 +5,7 @@ var DEBUG = false;
 
 
 onmessage = function(e) {
+    console.log(e)
     if (e.data.type === 'data') {
         if (DEBUG) console.log('Got data');
         data = e.data.data;
@@ -30,7 +31,10 @@ onmessage = function(e) {
         data.sort(function(a, b) {
             return b.score - a.score;
         });
-        var results = data.slice(0, 4);
+        if(query.length > 0)
+            var results = data.slice(0, 4);
+        else
+            var results = data.slice(0, 0);
         if (DEBUG) console.log('results: ', results);
         postMessage(results);
         
