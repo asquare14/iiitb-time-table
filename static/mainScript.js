@@ -7,11 +7,13 @@ function clearTT() {
             $('#' + i.toString() + j.toString()).removeClass('table-danger');
             $('#' + i.toString() + j.toString()).removeClass('table-clash');
             $('#' + i.toString() + j.toString()).html('');
+            $('#9' + i.toString() + j.toString()).html(":");
         }
     }
     clearSelected();
     $('#details-div').html("");
 }
+
 
 function getTimeTable(){
     var timetable = [];
@@ -80,7 +82,7 @@ function addToCalendar(){
         type: 'post',
         contentType: 'application/json',
         dataType: 'text',
-        data: timetable    
+        data: timetable
     }).done(function(result){
         console.log(result);
         var url = '/download_helper';
@@ -88,10 +90,10 @@ function addToCalendar(){
     }).fail(function(jqXHR, textStatus, errorThrown){
         console.log(timetable)
         console.warn(jqXHR.responseText)
-        console.log("fail: ", textStatus, errorThrown);    
-    });      
+        console.log("fail: ", textStatus, errorThrown);
+    });
 
-};        
+};
 
 function sdCallback(data, id, course, clear_var) {
     if(clear_var == 0){
@@ -113,7 +115,7 @@ function sdCallback(data, id, course, clear_var) {
                             $('#' + courseData['Slot'][slot]).removeClass('table-danger');
                             $('#' + courseData['Slot'][slot]).addClass('table-clash');
                         }
-                        var temp_list = ($('#' + '9' + courseData['Slot'][slot]).html().split(":")); 
+                        var temp_list = ($('#' + '9' + courseData['Slot'][slot]).html().split(":"));
                         var cnt = parseInt(temp_list[0]);
                         cnt = cnt + 1
                         temp_list[0] = cnt
@@ -182,13 +184,13 @@ function sdCallback(data, id, course, clear_var) {
                     if($('#' + courseData['Slot'][slot]).hasClass('table-danger')){
                         if((data['Name'].split(':')[0].toString().localeCompare($('#' + courseData['Slot'][slot]).html().toString())) == 0) {
                             $('#' + courseData['Slot'][slot]).removeClass('table-danger');
-                            $('#' + courseData['Slot'][slot]).removeClass('border border-danger');                        
+                            $('#' + courseData['Slot'][slot]).removeClass('border border-danger');
                             $('#' + courseData['Slot'][slot]).html("")
                             $('#9' + courseData['Slot'][slot]).html(":")
                         }
                     }
                     else if($('#' + courseData['Slot'][slot]).hasClass('table-clash')){
-                        var temp_list = ($('#' + '9' + courseData['Slot'][slot]).html().split(":")); 
+                        var temp_list = ($('#' + '9' + courseData['Slot'][slot]).html().split(":"));
                         var cnt = parseInt(temp_list[0]);
                         cnt = cnt - 1;
                         console.log(cnt)
@@ -201,13 +203,13 @@ function sdCallback(data, id, course, clear_var) {
                         temp_list[0] = cnt
                         if(cnt == 1){
                             $('#' + courseData['Slot'][slot]).removeClass('table-clash');
-                            $('#' + courseData['Slot'][slot]).addClass('table-danger');                       
+                            $('#' + courseData['Slot'][slot]).addClass('table-danger');
                         }
                         $('#' + courseData['Slot'][slot]).html(temp_list[1])
                         $('#9' + courseData['Slot'][slot]).html(temp_list.join(":"))
                     }
                 }
-                $('#details-div').html("");   
+                $('#details-div').html("");
             }
             else {
                 $('#details-div').html("");

@@ -2,9 +2,10 @@
 <html>
 
 <head>
-	<title>what-slot-iiitb</title>
+	<title>IIIT-B Time Table</title>
 
-	<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+	<!-- <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}"> -->
+	<link rel="shortcut icon" href="../static/favicon.jpeg" />
 
 	<!-- BOOTSTRAP -->
 
@@ -32,6 +33,7 @@
 	<script src="https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.min.js"></script>
 	<script type="text/javascript" src="https://addevent.com/libs/atc/1.6.1/atc.min.js" async defer></script>
 	<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
@@ -44,11 +46,22 @@
 					<img src="{{ url_for('static', filename='iiitb_logo.png') }}" alt="IIIT-B">
 				</div>
 				<div class="logo">
-				<a href="/"><h2>Home</h2></a>
+					<h1> Student Time Table</h1>
 				</div>
-				<div class="logo">
+				<!-- <div class="logo"> -->
+				<!-- <a href="/landing"><i class="fa fa-home"></i><h2>Home</h2></a> -->
+				<button  class="button2"><i class="fa fa-home"></i><a href="/landing" style="text-decoration:none; color:#000000"><span> Home</span></a></button>
+				<!-- <button class="button2" onclick="clickFun()"><i class="fa fa-home"></i> Home</button>
+				<script>
+				    clickFun() {
+				        window.location.assign("/landing")
+				    }
+				</script> -->
+				<!-- <a href="/landing"><h2>Home</h2></a> -->
+				<!-- </div> -->
+				<!-- <div class="logo">
 				<a href="/professor"><h2>Faculty</h2> </a>
-				</div>
+				</div> -->
 			</nav>
 
 			<div class="timetable">
