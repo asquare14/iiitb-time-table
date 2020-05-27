@@ -33,6 +33,7 @@
 	<script src="https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.min.js"></script>
 	<script type="text/javascript" src="https://addevent.com/libs/atc/1.6.1/atc.min.js" async defer></script>
 	<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
@@ -49,9 +50,13 @@
 				</div>
 				<!-- <div class="logo"> -->
 				<!-- <a href="/landing"><i class="fa fa-home"></i><h2>Home</h2></a> -->
-				<button  class="button2"><i class="fa fa-home"></i><a href="/landing"><span> Home</span></a></button>
-				<!-- <button  class="button2"><i class="fa fa-home"></i></button> -->
-
+				<button  class="button2"><i class="fa fa-home"></i><a href="/landing" style="text-decoration:none; color:#000000"><span> Home</span></a></button>
+				<!-- <button class="button2" onclick="clickFun()"><i class="fa fa-home"></i> Home</button>
+				<script>
+				    clickFun() {
+				        window.location.assign("/landing")
+				    }
+				</script> -->
 				<!-- <a href="/landing"><h2>Home</h2></a> -->
 				<!-- </div> -->
 				<!-- <div class="logo">
