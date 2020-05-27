@@ -7,15 +7,13 @@ function clearTT() {
             $('#' + i.toString() + j.toString()).removeClass('table-danger');
             $('#' + i.toString() + j.toString()).removeClass('table-clash');
             $('#' + i.toString() + j.toString()).html('');
+            $('#9' + i.toString() + j.toString()).html(":");
         }
     }
     clearSelected();
     $('#details-div').html("");
 }
 
-function clickFun(){
-  
-}
 
 function getTimeTable(){
     var timetable = [];
