@@ -83,3 +83,5 @@ Go to localhost:5000 to see your app in action !
 docker run -p 5000:5000 -it asquare14/whats-slot-iiitb
 ```
 - For seeing in live in action go to http://iiitbtt.herokuapp.com/landing
+
+References: https://whatslot.metakgp.org
