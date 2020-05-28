@@ -84,4 +84,5 @@ docker run -p 5000:5000 -it asquare14/whats-slot-iiitb
 ```
 - For seeing in live in action go to http://iiitbtt.herokuapp.com/landing
 
-References: https://whatslot.metakgp.org
+References: https://whatslot.metakgp.org which is licensed as :
+ https://lbesson.mit-license.org/
