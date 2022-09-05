@@ -19,3 +19,4 @@ from ics import Calendar, Event
 DEPT_KEY = 'dept'
 WEBSITE_KEY = 'website'
 TIMETABLE_KEY = 'timetable'
+#imports
